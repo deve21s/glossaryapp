@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
   
-  baseurl = 'http://localhost:5000'
+  baseurl = 'http://myglossary.herokuapp.com'
   constructor(private http : HttpClient, private local : LocalStorageService ) { }
 
   getData() {
