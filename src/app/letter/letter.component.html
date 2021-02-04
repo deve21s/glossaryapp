@@ -1,0 +1,21 @@
+<div class="container">
+    <br>
+    <!-- <div class="has-text-centered">
+        <h1 class="title is-1 is-family-monospace has-text-weight-light" *ngIf='id!=undefined'>Term start's with '{{id}}'</h1>
+        <h1 class="title is-1 is-family-monospace has-text-weight-light" *ngIf='id==undefined'>Term start's with 'all'</h1>
+        
+    </div> -->
+    <div class="has-text-centered">
+        <h1 class="tag title is-2 is-family-monospace has-text-weight-light" *ngIf='id!=undefined'>Term start's with '{{id}}'</h1>
+        <h1 class="tag title is-2 is-family-monospace has-text-weight-light" *ngIf='id==undefined'>Term start's with 'all'</h1>
+      </div>
+    <hr>    
+    <div class="letter tags" *ngFor="let a of alphabet">
+        
+        <a class="button is-white tag is-large" routerLinkActive="is-active" routerLink="/{{a}}">{{a}}</a>
+    </div>
+    <hr>    
+    <div *ngFor="let i of letter">
+        <a class="tag is-large" routerLink="/{{i._id}}/{{i.title}}">{{i.title}}</a>
+    </div>
+</div>

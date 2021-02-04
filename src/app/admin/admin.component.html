@@ -1,0 +1,46 @@
+<div class="container">
+    
+    <h1 class="title is-2 has-text-centered"> Admin panel</h1>
+    <div>
+    <!-- <span class="title is-6 has-text-left"><div> GlossaryCount - {{count}}</div></span> -->
+    <span class="title is-6 has-text-right"><div><a routerLink="/add" class="button is-small is-success is-outlined"> ADD -Glossary</a></div></span>
+    </div>
+    <br><br>
+    <div class="has-text-centered">
+    <table class="table" style="width: 100%;">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Details</th>
+                <th>Refrences</th>
+                <th>Releated</th>
+                <th>Delete/Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of alldata">
+                
+                <td *ngIf="i.title !== ''">{{i.title}}</td>
+                <td *ngIf="i.title.length == 0"> -</td>
+                <td *ngIf="i.details !== ''">{{i.details}}</td>
+                <td *ngIf="i.details.length == 0"> -</td>
+                <td *ngFor="let r of i.ref">
+                    <a href="{{r.link}}">{{r.name}}</a>                   
+                </td>
+                <td *ngIf="i.ref.length == 0"> -</td>
+                <td *ngFor="let r of i.rel">
+                    <a href="{{r.link}}">{{r.name}}</a>
+                </td>
+                <td *ngIf="i.rel.length == 0"> -</td>
+                <td>
+                    
+                    <a class="button is-small is-danger is-outlined" (click)="deleteItem(i)" routerLink="/delete/{{i._id}}">Detele</a>
+                    <a class="button is-small is-success is-outlined" routerLink="/edit/{{i._id}}">Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    
+
+</div>

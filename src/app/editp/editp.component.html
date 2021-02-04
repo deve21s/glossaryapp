@@ -1,0 +1,61 @@
+<br>
+
+<h1 class="has-text-centered title is-3">ADD -Glossary</h1>
+<div class="container is-max-desktop">
+ <form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)">
+<div class="field">
+    <label class="label">Title</label>
+    <div class="control">
+      <input class="input" type="text" id="title" name="title" ngModel = {{editdata.title}}>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Details</label>
+    <div class="control">
+      <textarea class="textarea" id="details" name="details" placeholder="Textarea" ngModel = {{editdata.details}}></textarea>
+    </div>
+  </div>
+
+
+  <div>
+    <div class="field" id="refdiv" *ngFor="let a of editdata.ref">
+        <label for="ref_name1">Refernces - Name:</label>
+        <input  type="text" class="input" id="ref_name1" name="ref_name1" ngModel =  {{a.name}}>
+
+        <label for="ref_link1">Refernces - Link:</label>
+        <input type="text" class="input" id="ref_link1" name="ref_link1" ngModel = {{a.link}}>
+    
+    </div>
+    <div>
+        <input type="button" class="button is-link is-light" (click)="addrefrence()" value="Add" />
+        <br>
+        <br>
+    </div>
+</div>
+
+
+
+
+<div>
+    <div class="field" id="reldiv" *ngFor="let a of editdata.ref">
+        <label for="rel_name1">Related - Name:</label>
+        <input  type="text" class="input" id="rel_name1" name="rel_name1" ngModel = {{a.name}}>
+
+        <label for="ref_link1">Related - Link:</label>
+        <input type="text" class="input" id="rel_link1" name="rel_link1" ngModel = {{a.name}}>
+    
+    </div>
+
+    <div>
+        <input type="button" class="button is-link is-light" (click)="addreleted()" value="Add" />
+        <br>
+    </div>
+    <br>
+</div>
+
+<button type="submit" class="button is-link is-light">save</button>
+        
+</form>
+
+</div>
+
