@@ -9,6 +9,7 @@ import { AdminGuard } from  './admin/admin.guard';
 import { EditpComponent } from './editp/editp.component';
 
 const routes: Routes = [
+  {path : '', redirectTo :  '/', pathMatch : 'full'},
   {path: '',component: LetterComponent},
   {path : 'admin', component : AdminComponent,canActivate: [AdminGuard]},
   {path : 'reload',redirectTo: 'admin',pathMatch: 'full'},
