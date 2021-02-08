@@ -22,6 +22,7 @@ export class AddgComponent implements OnInit {
     reflink.className = "input"
     reflink.id = "ref_link" + refSeq
     reflink.name = "ref_link" + refSeq
+    reflink.setAttribute('ngModel', '')
 
     var reflink_lable = document.createElement('Label')
     reflink_lable.setAttribute("for", "ref_link" + refSeq)
@@ -32,6 +33,7 @@ export class AddgComponent implements OnInit {
     refname.className = "input"
     refname.id = "ref_name" + refSeq
     refname.name = "ref_name" + refSeq
+    refname.setAttribute('ngModel', '')
 
     var refname_lable = document.createElement('Label')
     refname_lable.setAttribute("for", "ref_name" + refSeq)
@@ -54,6 +56,7 @@ addreleted(){
   rellink.className = "input"
   rellink.id = "rel_link"
   rellink.name = "rel_link" + relSeq
+  rellink.setAttribute('ngModel', '')
 
   var rellink_lable = document.createElement('Label')
   rellink_lable.setAttribute("for", "rel_link" + relSeq)
@@ -64,6 +67,7 @@ addreleted(){
   relname.className = "input"
   relname.id = "rel_name" + relSeq
   relname.name = "rel_name" + relSeq
+  relname.setAttribute('ngModel', '')
 
   var relname_lable = document.createElement('Label')
   relname_lable.setAttribute("for", "rel_name" + relSeq)
@@ -84,7 +88,7 @@ addreleted(){
 
   onSubmit(form: NgForm) {
     this.body = form.value;
-    console.log(form.value)
+    console.log(this.body)
       this.data.addData(this.body).subscribe(res => {
         this.router.navigateByUrl("admin");
       },

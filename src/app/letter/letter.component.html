@@ -1,21 +1,38 @@
+
 <div class="container">
-    <br>
-    <!-- <div class="has-text-centered">
-        <h1 class="title is-1 is-family-monospace has-text-weight-light" *ngIf='id!=undefined'>Term start's with '{{id}}'</h1>
-        <h1 class="title is-1 is-family-monospace has-text-weight-light" *ngIf='id==undefined'>Term start's with 'all'</h1>
-        
-    </div> -->
-    <div class="has-text-centered">
-        <h1 class="tag title is-2 is-family-monospace has-text-weight-light" *ngIf='id!=undefined'>Term start's with '{{id}}'</h1>
-        <h1 class="tag title is-2 is-family-monospace has-text-weight-light" *ngIf='id==undefined'>Term start's with 'all'</h1>
+  <div class="columns is-centerd">
+    <div class="column has-text-centered">
+      <h1 class="tag is-rounded title is-6 is-family-monospace has-text-weight-light" *ngIf='id!=undefined'>Term start's with '{{id}}'</h1>
+      <h1 class="tag is-rounded title is-6 is-family-monospace has-text-weight-light" *ngIf='id==undefined'>Term start's with 'all'</h1>
+    </div>
+  </div>
+  <hr>
+  <div class="columns is-mobile is-multiline is-centered">
+    <div class="column is-small letter" *ngFor="let a of alphabet">
+      <a class="button is-white tag is-rounded" routerLinkActive="is-active" routerLink="/{{a}}">{{a}}</a>
+    </div> 
+  </div>  
+  <hr> 
+  <div class="columns is-mobile is-multiline is-centered">
+    <div *ngFor="let i of letter" class="column m-1 card is-three-quarters-mobile
+      is-two-thirds-tablet
+      is-half-desktop
+      is-one-third-widescreen
+      is-one-quarter-fullhd">
+      <header class="card-header">
+        <p class="card-header-title is-centerd">
+          {{i.title}}
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          {{i.details.substr(0, 100)}}
+          <br>
+        </div>
       </div>
-    <hr>    
-    <div class="letter tags" *ngFor="let a of alphabet">
-        
-        <a class="button is-white tag is-large" routerLinkActive="is-active" routerLink="/{{a}}">{{a}}</a>
+      <footer class="card-footer">
+        <a routerLink="/{{i._id}}/{{i.title}}" class="card-footer-item">details</a>
+      </footer>
     </div>
-    <hr>    
-    <div *ngFor="let i of letter">
-        <a class="tag is-large" routerLink="/{{i._id}}/{{i.title}}">{{i.title}}</a>
-    </div>
+  </div>
 </div>

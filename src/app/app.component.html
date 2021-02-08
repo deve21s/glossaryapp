@@ -1,12 +1,12 @@
 <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" routerLink="" class="title is-4 is-family-monospace" style="margin-top: 5px;">
+  <div class="navbar-brand columns is-vcentered">
+    <div class="column">
+    <a class="navbar-item" routerLink="" class="is-family-monospace title is-3 tags is-small is-centered mt-3">
       Glossary
     </a>
+    </div>
   </div>
-
   <div id="navbarBasicExample" class="navbar-menu">
-
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
@@ -18,14 +18,18 @@
             Log out
           </a>
           <div class="field has-addons">
-            <div class="control">
-              <input class="input" type="text" placeholder="Find a repository">
-            </div>
-            <div class="control">
-              <a class="button is-info">
-                Search
-              </a>
-            </div>
+            <form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)">
+              <div class="field has-addons has-addons-centered">
+                <p class="control">
+                  <input class="input" type="text" name="title" #name placeholder="search here" aria-label="Search through site content" required ngModel>
+                </p>
+                <p class="control">
+                  <!-- <input type = "submit" class="button is-success" value = "search"> -->
+                  <a class="button is-success" routerLink="/search/{{name.value}}">search</a>
+                </p>
+              </div>
+            </form>
+          
           </div>
         </div>
       </div>
@@ -34,7 +38,6 @@
 </nav>
 <br>
 <br>
-<br>
-
+  <br>  
 <router-outlet></router-outlet>
-<!-- <app-letter></app-letter> -->
+

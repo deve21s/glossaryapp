@@ -1,23 +1,26 @@
-<!-- 
-  <form action="http://localhost:5000/login" method="POST">
-    <div class="field">
-       <label for="email">Email:</label>
-       <input type="email" class="input" id="email" name="email" required />
-     </div>
-     <div class="field">
-       <label for="password">Password:</label>
-       <input type="password" class="input" id="password" name="password" required />
-     </div>
+<h1 class="has-text-centered title is-3">Login</h1>
+<div class="columns is-multiline is-mobile">
+<div class="column">
+</div>
+<div class="column is-half">
+<form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)">
+  <div class="field">
+    <label class="label is-left">Email :</label>
+    <div class="control">
+      <input class="input is-right" type="email" name="email" placeholder="Enter Email here" required autofocus ngModel>
+    </div>
+  </div>
 
-     <button class="btn btn-primary" (click)="login()" >Login</button>
-</form> -->
+  <div class="field">
+    <label class="label is-left">Password :</label>
+    <div class="control">
+      <input class="input is-right" type="password" name="password" required ngModel>
+    </div>
+  </div>
 
-<form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)" >
-  <input type = "email" name = "email" placeholder = "Your email" ngModel>
-  <br/>
-
-  <input type = "password" name = "password" placeholder = "Your password" ngModel>
-  <br/>
-
-  <input type = "submit" value = "login">
+  <input type = "submit" class="button is-success" value = "login">
 </form>
+</div>
+<div class="column">
+</div>
+</div>

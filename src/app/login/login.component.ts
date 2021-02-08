@@ -15,13 +15,12 @@ export class LoginComponent implements OnInit {
   constructor(private data: DataService,private localSt:LocalStorageService, private router : Router) { }
 
   ngOnInit(): void { 
-    
   }
   onSubmit(form: NgForm) {
     this.body = form.value;
       this.data.login(this.body).subscribe(res => {
         this.localSt.store('user', res)
-        console.log(this.router.navigateByUrl("admin"))
+        this.router.navigateByUrl('admin');
       },
       err => {
         this.router.navigateByUrl("login");

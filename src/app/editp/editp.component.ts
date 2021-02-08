@@ -89,7 +89,6 @@ addreleted(){
   }
   onSubmit(form: NgForm) {
     this.body = form.value;
-    console.log(form.value)
       this.data.editData(this.id,this.body).subscribe(res => {
         this.router.navigateByUrl("admin");
       },

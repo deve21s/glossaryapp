@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LocalStorageService, LocalStorage } from 'ngx-webstorage'
+import { DataService } from './data.service';
 
 
 @Component({
@@ -9,9 +11,17 @@ import { LocalStorageService, LocalStorage } from 'ngx-webstorage'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private localst : LocalStorageService,private router: Router) {}
-  title = 'glossaryapp';
+  body: any;
+  searchres
   
+  
+  constructor(private localst : LocalStorageService,private router: Router,private data: DataService) {}
+  
+  title = 'glossaryapp';
+  ngOnInit() {
+   this.body = this.body
+   this.searchres = this.searchres
+  }
   islogin() {
     if(this.localst.retrieve('user')){
       return 'logout'
@@ -25,6 +35,15 @@ export class AppComponent {
       return this.router.navigateByUrl("")
   }
 
+  onSubmit(form: NgForm) {
+      let body = form.value.title;
+      this.data.getsearch(body).subscribe(res => {
+        this.searchres = res
+      },
+      err => {
+        console.log(err)
+      })
+  }
 
 
 }

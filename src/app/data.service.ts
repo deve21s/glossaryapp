@@ -20,13 +20,11 @@ export class DataService {
   getDataByletter(id) {
     let end = '/' + id
     return this.http.get(this.baseurl + end)
-    console.log
   }
   
   getDataByid(id) {
     let end = '/details/' + id
     return this.http.get(this.baseurl + end)
-    console.log
   }
   
   delete(id){
@@ -36,19 +34,21 @@ export class DataService {
   
   addData(body) {
     let end = "/new"
-    console.log(body)
     return this.http.post(this.baseurl+end,body)
   }
   editData(id,body) {
     let end = "/edit/" + id
-    console.log(body)
     return this.http.post(this.baseurl+end,body)
   }
 
   login(body) {
     let end = '/login'
-    console.log(body)
     return this.http.post(this.baseurl+end,body)
+  }
+  getsearch(title) {
+    let end = '/search/' + title
+    let base = 'http://localhost:5000'
+    return this.http.get(base + end)
   }
   isLoggedIn(){
     if(this.local.retrieve('user')){

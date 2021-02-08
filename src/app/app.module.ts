@@ -13,6 +13,10 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 import { EditpComponent } from './editp/editp.component';
+import { SearchComponent } from './search/search.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { EditpComponent } from './editp/editp.component';
     AdminComponent,
     AddgComponent,
     LoginComponent,
-    EditpComponent
+    EditpComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +35,10 @@ import { EditpComponent } from './editp/editp.component';
     HttpClientModule,
     FormsModule,
     NgxWebstorageModule.forRoot()
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+    NO_ERRORS_SCHEMA
   ],
   providers: [],
   bootstrap: [AppComponent]
