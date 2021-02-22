@@ -1,26 +1,26 @@
 
-<div class="container">
+<div class="container ">
   <div class="columns is-centerd">
     <div class="column has-text-centered">
-      <h1 class="tag is-rounded title is-6 is-family-monospace has-text-weight-light" *ngIf='id!=undefined'>Term start's with '{{id}}'</h1>
-      <h1 class="tag is-rounded title is-6 is-family-monospace has-text-weight-light" *ngIf='id==undefined'>Term start's with 'all'</h1>
+      <h1 class="tag is-rounded title is-3 has-text-weight-light" *ngIf='id!=undefined && id!="all"'>Term start's with '{{id}}'</h1>
+      <h1 class="tag is-rounded title is-3 has-text-weight-light" *ngIf='id== "all"'>All Term's</h1>
     </div>
   </div>
-  <hr>
-  <div class="columns is-mobile is-multiline is-centered">
-    <div class="column is-small letter" *ngFor="let a of alphabet">
-      <a class="button is-white tag is-rounded" routerLinkActive="is-active" routerLink="/{{a}}">{{a}}</a>
+  
+  <div class="columns tile is-mobile box is-multiline is-centered mb-5">
+    <div class="column is-small letter mt-5" *ngFor="let a of alphabet" >
+      <a class="button is-white tag is-rounded is-dark" routerLinkActive="is-active is-medium" routerLink="/{{a}}">{{a}}</a>
     </div> 
   </div>  
-  <hr> 
-  <div class="columns is-mobile is-multiline is-centered">
+  
+  <div *ngIf="letter.length !== 0" class="columns box is-mobile is-multiline is-centered">
     <div *ngFor="let i of letter" class="column m-1 card is-three-quarters-mobile
       is-two-thirds-tablet
       is-half-desktop
       is-one-third-widescreen
-      is-one-quarter-fullhd">
+      is-one-quarter-fullhd is-vcentered">
       <header class="card-header">
-        <p class="card-header-title is-centerd">
+        <p class="card-header-title is-centerd is-rounded">
           {{i.title}}
         </p>
       </header>
@@ -31,8 +31,11 @@
         </div>
       </div>
       <footer class="card-footer">
-        <a routerLink="/{{i._id}}/{{i.title}}" class="card-footer-item">details</a>
+        <a routerLink="/{{i._id}}/{{i.title}}" class="card-footer-item is-centerd button is-info is-rounded">details</a>
       </footer>
     </div>
+  </div>
+  <div *ngIf="letter.length == 0" class="box title is-1 has-text-centered ">
+      Data Not avilable
   </div>
 </div>

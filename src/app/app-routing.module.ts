@@ -13,7 +13,7 @@ const routes: Routes = [
   {path : '', redirectTo :  '/all', pathMatch : 'full'},
   {path: '',component: LetterComponent},
   {path : 'admin', component : AdminComponent,canActivate: [AdminGuard]},
-  {path : 'reload',redirectTo: 'admin',pathMatch: 'full'},
+  {path : 'reload',redirectTo: '/admin',pathMatch: 'full'},
   {path : 'add', component : AddgComponent},
   {path : 'login', component : LoginComponent},
   {path : 'all/:name', component : DetailsComponent},

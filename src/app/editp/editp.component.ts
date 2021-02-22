@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { from } from 'rxjs';
 import { DataService } from '../data.service'
-import{ NgForm } from '@angular/forms'
+import{ FormBuilder, FormArray, FormGroup, NgForm, FormControl } from '@angular/forms'
 
 
 @Component({
@@ -78,15 +78,65 @@ addreleted(){
 }
 
 
-  constructor(private data : DataService, private route : ActivatedRoute, private router: Router) { }
+  constructor(private data : DataService, private route : ActivatedRoute, private router: Router, private fb: FormBuilder) { }
+  glossaryForm : FormGroup
+ 
+
 
   ngOnInit(): void {
+
+    // this.glossaryForm = this.fb.group({
+    //   title: '',
+    //   details : '',
+    //   ref: this.fb.array([this.fb.group({name:'',link:''})]),
+    //  rel: this.fb.array([this.fb.group({name:'',link:''})]),
+    //   // ref : this.fb.array([]),
+    //   // rel : this.fb.array([])
+    // })
     let id = this.route.snapshot.params.id;
     this.id = id;
     this.data.geteditData(id).subscribe( (res)=> {
       this.editdata = res;
     })
+    
+    
+    // let formdata = this.editdata
+    // this.glossaryForm = this.fb.group({
+    //   title: [],
+    //   details: [],
+    //   ref: this.fb.array([this.fb.group({name:'',link:''})]),
+    //   rel: this.fb.array([this.fb.group({name:'',link:''})])
+    // })
+    
   }
+
+  get ref() {
+    return this.glossaryForm.get('ref') as FormArray;
+  }
+  get rel() {
+    return this.glossaryForm.get('rel') as FormArray;
+  }
+  addSellingPoint() {
+    this.ref.push(this.fb.group({name:'',link:''}));
+  }
+  rell(edit) {
+    edit.array.forEach(element => {
+      this.ref.push(this.fb.group({name: element.name,link: element.link}));  
+    });
+    
+  }
+
+  deleteSellingPoint(index) {
+    this.ref.removeAt(index);
+  }
+  addrel() {
+    this.rel.push(this.fb.group({name:'',link:''}));
+  }
+
+  deleterel(index) {
+    this.rel.removeAt(index);
+  }
+
   onSubmit(form: NgForm) {
     this.body = form.value;
       this.data.editData(this.id,this.body).subscribe(res => {

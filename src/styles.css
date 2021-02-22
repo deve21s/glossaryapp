@@ -5,9 +5,25 @@
     height: auto;
     margin: 0;
   } */
+  @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
   html, body {
     background-color: bisque;
     min-height: 100vh;
     height: auto;
     margin: 0;
+    letter-spacing: 1.5px;
+    word-spacing: 3px;
   }
+  
+    input::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+    .title {
+      font-family: cursive;
+      letter-spacing: 5px;
+    } 
+    
+    
+      
+    
+   

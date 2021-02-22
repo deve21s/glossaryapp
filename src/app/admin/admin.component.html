@@ -1,8 +1,11 @@
-<div class="container">
-    
-    <h1 class="title is-2 has-text-centered"> Admin panel</h1>
+<div class="container is-rounded">
+    <div class="container">
+        <div class="columns is-centerd">
+          <div class="column has-text-centered">
+            <h1 class="tag is-rounded title is-3 is-family-monospace has-text-weight-light">Admin panel</h1>
+          </div>
+        </div>
     <div>
-    <!-- <span class="title is-6 has-text-left"><div> GlossaryCount - {{count}}</div></span> -->
     <span class="title is-6 has-text-right"><div><a routerLink="/add" class="button is-small is-success is-outlined"> ADD -Glossary</a></div></span>
     </div>
     <br><br>
@@ -21,21 +24,30 @@
             <tr *ngFor="let i of alldata">
                 
                 <td *ngIf="i.title !== ''">{{i.title}}</td>
-                <td *ngIf="i.title.length == 0"> -</td>
+                <td *ngIf="i.title == ''"> -</td>
                 <td *ngIf="i.details !== ''">{{i.details}}</td>
-                <td *ngIf="i.details.length == 0"> -</td>
-                <td *ngFor="let r of i.ref">
-                    <a href="{{r.link}}">{{r.name}}</a>                   
+                <td *ngIf="i.details == ''"> -</td>
+                <td *ngIf="i.ref.length !== 0">
+                    <a class="button is-small is-rounded" *ngFor="let r of i.ref" href="{{r.link}}">{{r.name}}</a>                   
                 </td>
                 <td *ngIf="i.ref.length == 0"> -</td>
-                <td *ngFor="let r of i.rel">
-                    <a href="{{r.link}}">{{r.name}}</a>
+                <td *ngIf="i.rel.length !== 0">
+                    <a class="button is-small is-rounded" *ngFor="let r of i.rel" href="{{r.link}}">{{r.name}}</a>
                 </td>
                 <td *ngIf="i.rel.length == 0"> -</td>
                 <td>
-                    
-                    <a class="button is-small is-danger is-outlined" (click)="deleteItem(i)" routerLink="/delete/{{i._id}}">Detele</a>
-                    <a class="button is-small is-success is-outlined" routerLink="/edit/{{i._id}}">Edit</a>
+                    <div class="field is-grouped is-grouped-centered">
+                        <p class="control">
+                          <a class="button is-small is-danger is-rounded is-outlined" (click)="deleteItem(i)" routerLink="/reload">
+                            Delete
+                          </a>
+                        </p>
+                        <p class="control">
+                          <a class="button is-small is-warning is-rounded is-outlined" routerLink="/edit/{{i._id}}">
+                            Edit
+                          </a>
+                        </p>
+                    </div>
                 </td>
             </tr>
         </tbody>

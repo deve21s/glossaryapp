@@ -33,8 +33,10 @@ export class DataService {
   }
   
   addData(body) {
+    let base = 'http://localhost:5000'
     let end = "/new"
-    return this.http.post(this.baseurl+end,body)
+    //change here again
+    return this.http.post(base+end,body)
   }
   editData(id,body) {
     let end = "/edit/" + id

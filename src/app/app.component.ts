@@ -13,15 +13,27 @@ import { DataService } from './data.service';
 export class AppComponent {
   body: any;
   searchres
+  letter: Object;
   
   
   constructor(private localst : LocalStorageService,private router: Router,private data: DataService) {}
-  
+  config = {
+    apiKey: '9f9346138a25eb026e745e8193448322',
+    appId: '4E5ID5Z9QX',
+    indexName: 'dev_deven',
+    routing: true
+  }
   title = 'glossaryapp';
   ngOnInit() {
+    this.data.getData().subscribe( (res)=> {
+      this.letter = res;
+    })
    this.body = this.body
    this.searchres = this.searchres
   }
+  
+  
+  
   islogin() {
     if(this.localst.retrieve('user')){
       return 'logout'
@@ -43,6 +55,9 @@ export class AppComponent {
       err => {
         console.log(err)
       })
+  }
+  keyevent(){
+    console.log('hello')
   }
 
 

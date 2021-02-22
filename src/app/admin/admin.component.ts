@@ -25,9 +25,10 @@ export class AdminComponent implements OnInit {
     })
   }
 
-  deleteItem(i){
-    this.data.delete(i._id).subscribe( res => this.router.navigateByUrl('/reload'))
-     
-  }
+   deleteItem(i){
+      this.data.delete(i._id).subscribe();
+      this.alldata = this.alldata.filter(item => item._id != i._id);
+      this.router.navigateByUrl('/reload')
+   }
 
 }

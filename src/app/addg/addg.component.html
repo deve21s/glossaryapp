@@ -1,4 +1,4 @@
-<br>
+<!-- <br>
 <h1 class="has-text-centered title is-3">ADD -Glossary</h1>
 <div class="container is-max-desktop">
  <form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)">
@@ -30,9 +30,6 @@
     </div>
 </div>
 
-
-
-
 <div>
     <div class="field" id="reldiv">
         <label for="rel_name1">Related - Name:</label>
@@ -54,4 +51,52 @@
         
 </form>
 
-</div>
+</div> -->
+<div class="container">
+  <div class="columns is-centerd">
+    <div class="column has-text-centered">
+      <h1 class="tag is-rounded title is-3 is-family-monospace has-text-weight-light">ADD GlossaryForm</h1>
+    </div>
+  </div>
+
+<form [formGroup]="glossaryForm" #myform = "ngForm" (ngSubmit) = "onSubmit(myform)">
+  <div class="field">
+    <label class="label">Title</label>
+    <div class="control">
+      <input class="input" placeholder="Enter title .." autofocus formControlName="title" required/>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Details</label>
+    <div class="control">
+      <textarea class="textarea" placeholder="details here .." formControlName="details" required></textarea>
+    </div>
+  </div>
+  
+  <div class="field" formArrayName="ref">
+    <div *ngFor="let item of ref.controls; let pointIndex=index" [formGroupName]="pointIndex">
+      <label class="label">Refernces - Name:</label>
+      <input  class="input" id="ref" formControlName="name" required/>
+
+      <label class="label">Refernces - Link:</label>
+      <input type="text" class="input" formControlName="link" required/>
+      <button type="button" class="button is-link is-light" (click)="deleteSellingPoint(pointIndex)">Remove</button>
+    </div>
+    <button type="button" class="button is-link is-light" (click)="addSellingPoint()">ADD</button>
+  </div>
+
+  <div class="field" formArrayName="rel">
+    <div *ngFor="let item of rel.controls; let pointIndex=index" [formGroupName]="pointIndex">
+      <label class="label">Related - Name:</label>
+      <input  class="input" id="ref" formControlName="name" required/>
+
+      <label class="label">Related - Link:</label>
+      <input type="text" class="input" formControlName="link" required/>
+      <button type="button" class="button is-link is-light" (click)="deleterel(pointIndex)">Remove</button>
+    </div>
+    <button type="button" class="button is-link is-light" (click)="addrel()">ADD</button>
+  </div>
+
+<button type="submit" [disabled]="!glossaryForm.valid" class="button is-link is-light">save</button>
+</form>
+{{ this.glossaryForm.value | json }}

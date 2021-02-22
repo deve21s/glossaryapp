@@ -3,6 +3,9 @@ import { DataService } from '../data.service';
 import { Route, Router } from '@angular/router'
 import {NgForm} from '@angular/forms';
 import { from } from 'rxjs';
+import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-addg',
@@ -80,15 +83,45 @@ addreleted(){
   reldiv.appendChild(rellink);
 }
 
-  constructor(private data : DataService, private router: Router) { }
+  constructor(private data : DataService, private router: Router, private fb : FormBuilder) { }
+  glossaryForm: FormGroup;
 
-  ngOnInit(): void {
+  ngOnInit() {
 
+    /* Initiate the form structure */
+    this.glossaryForm = this.fb.group({
+      title: [],
+      details: [],
+      ref: this.fb.array([this.fb.group({name:'',link:''})]),
+      rel: this.fb.array([this.fb.group({name:'',link:''})])
+    })
+  }
+  // ngOnInit(): void {
+
+  // }
+  get ref() {
+    return this.glossaryForm.get('ref') as FormArray;
+  }
+  get rel() {
+    return this.glossaryForm.get('rel') as FormArray;
+  }
+  addSellingPoint() {
+    this.ref.push(this.fb.group({name:'',link:''}));
+  }
+
+  deleteSellingPoint(index) {
+    this.ref.removeAt(index);
+  }
+  addrel() {
+    this.rel.push(this.fb.group({name:'',link:''}));
+  }
+
+  deleterel(index) {
+    this.rel.removeAt(index);
   }
 
   onSubmit(form: NgForm) {
-    this.body = form.value;
-    console.log(this.body)
+    this.body = this.glossaryForm.value;
       this.data.addData(this.body).subscribe(res => {
         this.router.navigateByUrl("admin");
       },

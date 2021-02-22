@@ -1,6 +1,6 @@
 <div class="container">
-    <div>
-        <div class="has-text-centered ">
+    <div class="box">
+        <div class="has-text-centered">
             <h1 class="title is-1">{{word.title}}</h1>
         </div>
         <br><br>
@@ -8,12 +8,12 @@
         <br><br>
         <h1 class="title is-5">Refrences :</h1>
         <div *ngFor="let r of word.ref">
-            <a routerLink="{{r.link}}">{{r.name}}</a>
+            <a class="tag is-rounded" routerLink="/{{r.link}}">{{r.name}}</a>
         </div>
         <h1 class="title is-7"></h1>
         <h1 class="title is-5">Related :</h1>
         <div *ngFor="let r of word.rel">
-            <a routerLink="{{r.link}}">{{r.name}}</a>
+            <a class="tag is-rounded" routerLink="/{{r.link}}">{{r.name}}</a>
         </div>
     </div>
 </div>

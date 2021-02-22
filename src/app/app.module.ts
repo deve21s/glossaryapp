@@ -16,6 +16,8 @@ import { EditpComponent } from './editp/editp.component';
 import { SearchComponent } from './search/search.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgAisModule } from 'angular-instantsearch';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxWebstorageModule.forRoot()
+    NgxWebstorageModule.forRoot(),
+    NgAisModule.forRoot(),
+    ReactiveFormsModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
