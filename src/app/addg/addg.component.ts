@@ -15,6 +15,7 @@ import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 export class AddgComponent implements OnInit {
   body: any;
   id: any;
+  value
   
   addrefrence(){
     let refSeq = 2
@@ -118,6 +119,9 @@ addreleted(){
 
   deleterel(index) {
     this.rel.removeAt(index);
+  }
+  save() {
+    this.value = this.value;
   }
 
   onSubmit(form: NgForm) {

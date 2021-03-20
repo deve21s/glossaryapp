@@ -18,6 +18,20 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { NgAisModule } from 'angular-instantsearch';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FilterPipe } from './filter.pipe';
+import { Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { QuillModule } from 'ngx-quill-wrapper';
+import { QUILL_CONFIG } from 'ngx-quill-wrapper';
+import { QuillConfigInterface } from 'ngx-quill-wrapper';
+
+const DEFAULT_QUILL_CONFIG: QuillConfigInterface = {
+  theme: 'snow',
+  modules: {
+    toolbar: true
+  },
+  placeholder: 'Empty canvas'
+};
 
 
 @NgModule({
@@ -29,7 +43,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     AddgComponent,
     LoginComponent,
     EditpComponent,
-    SearchComponent
+    SearchComponent,
+    FilterPipe
+    
   ],
   imports: [
     BrowserModule,
@@ -38,13 +54,21 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     NgxWebstorageModule.forRoot(),
     NgAisModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    QuillModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA
   ],
-  providers: [],
+  providers: [
+    {
+      provide: QUILL_CONFIG,
+      useValue: DEFAULT_QUILL_CONFIG
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

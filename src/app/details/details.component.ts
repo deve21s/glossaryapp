@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../data.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import {NgForm} from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-details',
@@ -10,8 +13,13 @@ import { ActivatedRoute } from '@angular/router';
 export class DetailsComponent implements OnInit {
   word = null;
   id = null;
-  constructor(private route: ActivatedRoute,private data: DataService) { }
+  myform
+  body
+  showhide = "none"
 
+  
+  constructor(private route: ActivatedRoute,private data: DataService, private router : Router) { }
+  
   ngOnInit(): void {
     
     this.id = this.route.snapshot.params.id;
@@ -27,5 +35,41 @@ export class DetailsComponent implements OnInit {
     
 
   }
+
+  show(replyform) {
+    this.showhide = 'block'
+  }
+  hide() {
+    this.showhide = 'none'
+  }
+
+  onSubmit(form: NgForm) {
+    this.body = form.value;
+    console.log(this.body);
+      this.data.makecomment(this.id ,this.body).subscribe(res => {
+        console.log(res);
+        location.reload();
+        
+      },
+      err => {
+        location.reload();
+      })
+  }
+  onReply(form : NgForm) {
+    this.body = form.value;
+    console.log(this.body)
+    const {name , text , cid} = this.body
+    const body = new Object ({name, text})
+    console.log(body)
+    this.data.makereply(cid ,body).subscribe(res => {
+      console.log(res);
+       location.reload();
+      
+    },
+    err => {
+       location.reload();
+    })
+  } 
+
 
 }

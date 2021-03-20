@@ -52,51 +52,60 @@
 </form>
 
 </div> -->
-<div class="container">
+<div class="container mt-2">
   <div class="columns is-centerd">
     <div class="column has-text-centered">
-      <h1 class="tag is-rounded title is-3 is-family-monospace has-text-weight-light">ADD GlossaryForm</h1>
+      <h1 class="box title is-size-1-desktop is-size-4-mobile is-family-monospace">GlossaryForm</h1>
     </div>
   </div>
-
+  <div class="box">
 <form [formGroup]="glossaryForm" #myform = "ngForm" (ngSubmit) = "onSubmit(myform)">
-  <div class="field">
-    <label class="label">Title</label>
-    <div class="control">
-      <input class="input" placeholder="Enter title .." autofocus formControlName="title" required/>
+  
+  <div class="box">
+    <div class="field box">
+      <label class="label">Title</label>
+      <div class="control">
+        <input class="input is-rounded" placeholder="Enter title .." autofocus formControlName="title" required/>
+      </div>
     </div>
-  </div>
-  <div class="field">
-    <label class="label">Details</label>
-    <div class="control">
-      <textarea class="textarea" placeholder="details here .." formControlName="details" required></textarea>
+    
+    <div class="field box">
+      <label class="label">Details</label>
+      <quill [(value)]="value" (onblur) = "save()">
+      </quill>
+      
+      <div class="control">
+        <textarea class="textarea is-rounded is-hidden" formControlName="details" placeholder="details here .."  required [ngModel] ='value'></textarea>
+      </div>
     </div>
   </div>
   
-  <div class="field" formArrayName="ref">
-    <div *ngFor="let item of ref.controls; let pointIndex=index" [formGroupName]="pointIndex">
+  <div class="field box" formArrayName="ref">
+    <div class="mb-3 box" *ngFor="let item of ref.controls; let pointIndex=index" [formGroupName]="pointIndex">
       <label class="label">Refernces - Name:</label>
-      <input  class="input" id="ref" formControlName="name" required/>
+      <input  class="input is-rounded" id="ref" formControlName="name" required/>
 
       <label class="label">Refernces - Link:</label>
-      <input type="text" class="input" formControlName="link" required/>
-      <button type="button" class="button is-link is-light" (click)="deleteSellingPoint(pointIndex)">Remove</button>
+      <input type="text" class="input is-rounded" formControlName="link" required/>
+      <button type="button" class="button mt-2" (click)="deleteSellingPoint(pointIndex)">Remove</button>
     </div>
-    <button type="button" class="button is-link is-light" (click)="addSellingPoint()">ADD</button>
+    <button type="button" class="button is-inline-block" (click)="addSellingPoint()">Add Refernces</button>
   </div>
 
-  <div class="field" formArrayName="rel">
-    <div *ngFor="let item of rel.controls; let pointIndex=index" [formGroupName]="pointIndex">
+  <div class="field box" formArrayName="rel">
+    <div class="mb-3 box" *ngFor="let item of rel.controls; let pointIndex=index" [formGroupName]="pointIndex">
       <label class="label">Related - Name:</label>
-      <input  class="input" id="ref" formControlName="name" required/>
+      <input  class="input is-rounded" id="ref" formControlName="name" required/>
 
       <label class="label">Related - Link:</label>
-      <input type="text" class="input" formControlName="link" required/>
-      <button type="button" class="button is-link is-light" (click)="deleterel(pointIndex)">Remove</button>
+      <input type="text" class="input is-rounded" formControlName="link" required/>
+      <button type="button" class="button mt-2" (click)="deleterel(pointIndex)">Remove</button>
     </div>
-    <button type="button" class="button is-link is-light" (click)="addrel()">ADD</button>
+    <button type="button" class="button" (click)="addrel()">Add Related</button>
   </div>
 
-<button type="submit" [disabled]="!glossaryForm.valid" class="button is-link is-light">save</button>
+<button type="submit" [disabled]="!glossaryForm.valid" class="button has-center">Save - Glossary</button>
 </form>
+  </div>
 {{ this.glossaryForm.value | json }}
+<br><br>

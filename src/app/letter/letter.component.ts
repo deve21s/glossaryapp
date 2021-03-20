@@ -10,6 +10,8 @@ export class LetterComponent implements OnInit {
   alphabet = ['all','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
   letter = null;
   id = null;
+  p : number = 1
+  filter
   
   constructor(private data: DataService, private route : ActivatedRoute) { }
   ngOnInit(): void {
@@ -27,12 +29,6 @@ export class LetterComponent implements OnInit {
     }
     })
   
-    // this.data.getsearch(this.body).subscribe(res => {
-    //     this.searchres = res
-    //   },
-    //   err => {
-    //     console.log(err)
-    //   })
   }
 
 }

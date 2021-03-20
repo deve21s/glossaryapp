@@ -9,8 +9,8 @@
   html, body {
     background-color: bisque;
     min-height: 100vh;
+    max-height: fit-content;
     height: auto;
-    margin: 0;
     letter-spacing: 1.5px;
     word-spacing: 3px;
   }

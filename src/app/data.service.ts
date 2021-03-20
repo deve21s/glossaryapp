@@ -21,11 +21,12 @@ export class DataService {
     let end = '/' + id
     return this.http.get(this.baseurl + end)
   }
-  
+  //change letter
   getDataByid(id) {
     let end = '/details/' + id
     return this.http.get(this.baseurl + end)
   }
+  
   
   delete(id){
     let end = '/delete/' + id
@@ -33,10 +34,9 @@ export class DataService {
   }
   
   addData(body) {
-    let base = 'http://localhost:5000'
     let end = "/new"
     //change here again
-    return this.http.post(base+end,body)
+    return this.http.post(this.baseurl+end,body)
   }
   editData(id,body) {
     let end = "/edit/" + id
@@ -49,8 +49,15 @@ export class DataService {
   }
   getsearch(title) {
     let end = '/search/' + title
-    let base = 'http://localhost:5000'
-    return this.http.get(base + end)
+    return this.http.get(this.baseurl + end)
+  }
+  makecomment(id ,body) {
+    let end = '/comment/' + id
+    return this.http.post(this.baseurl + end, body)
+  }
+  makereply(cid ,body) {
+    let end = '/reply/' + cid
+    return this.http.post(this.baseurl + end, body)
   }
   isLoggedIn(){
     if(this.local.retrieve('user')){
@@ -60,7 +67,4 @@ export class DataService {
     }
   }
   
-  
-
-
 }

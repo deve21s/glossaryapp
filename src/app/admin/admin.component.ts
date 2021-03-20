@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {DataService} from '../data.service';
 import { ActivatedRoute, Router, ParamMap } from "@angular/router";
 
+
+
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -11,11 +14,14 @@ export class AdminComponent implements OnInit {
   alldata = null;
   id = null;
   count = null;
+  filter
+  p: number = 1;
+  
+  
 
   constructor(private route : ActivatedRoute, private data : DataService, private router: Router) { }
 
   ngOnInit(): void {
-
     this.data.getData().subscribe( (res) => {
       this.alldata = res
     } )
