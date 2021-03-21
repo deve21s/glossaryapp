@@ -42,6 +42,15 @@ export class DataService {
     let end = "/edit/" + id
     return this.http.post(this.baseurl+end,body)
   }
+  like(id, body) {
+    let end = "/likes/" + id
+    return this.http.post(this.baseurl + end, body)
+  }
+  dislike(id, body) {
+    let end = "/dislike/" + id
+    return this.http.post(this.baseurl + end, body)
+  }
+
 
   login(body) {
     let end = '/login'

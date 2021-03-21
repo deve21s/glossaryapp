@@ -16,6 +16,7 @@ export class DetailsComponent implements OnInit {
   myform
   body
   showhide = "none"
+  dlike = false
 
   
   constructor(private route: ActivatedRoute,private data: DataService, private router : Router) { }
@@ -23,7 +24,7 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     
     this.id = this.route.snapshot.params.id;
-    console.log(this.id);
+    
 
     if(this.id){
     this.data.getDataByid(this.id).subscribe( (res)=> {
@@ -41,6 +42,39 @@ export class DetailsComponent implements OnInit {
   }
   hide() {
     this.showhide = 'none'
+  }
+  dilike() {
+    this.dlike = !this.dlike
+  }
+  like () {
+    this.data.like(this.id ,this.body).subscribe(res => {
+      console.log(res);
+      this.dilike()
+      location.reload();
+      
+      
+    },
+    err => {
+      this.dilike()
+      location.reload();
+      
+    })
+
+  }
+  dislike () {
+    this.data.dislike(this.id ,this.body).subscribe(res => {
+      console.log(res);
+      this.dilike()
+      location.reload();
+      
+      
+    },
+    err => {
+      this.dilike()
+      location.reload();
+      
+    })
+
   }
 
   onSubmit(form: NgForm) {
