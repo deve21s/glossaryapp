@@ -1,26 +1,39 @@
 <h1 class="has-text-centered title is-3">Login</h1>
 <div class="columns is-multiline is-mobile">
-<div class="column">
-</div>
-<div class="column is-half login-box">
-<form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)">
-  <div class="field">
-    <label class="label is-left">Email :</label>
-    <div class="control">
-      <input class="input is-right" type="email" name="email" placeholder="Enter Email here" required autofocus ngModel>
-    </div>
-  </div>
+  <div class="column"></div>
+  <div class="column is-half login-box">
+    <form #myform="ngForm" (ngSubmit)="onSubmit(myform)">
+      <div class="field">
+        <label class="label is-left">Email</label>
+        <div class="control">
+          <input
+            class="input is-right"
+            type="email"
+            name="email"
+            required
+            autofocus
+            autocomplete
+            ngModel
+          />
+        </div>
+      </div>
 
-  <div class="field">
-    <label class="label is-left">Password :</label>
-    <div class="control">
-      <input class="input is-right" type="password" name="password" required ngModel>
-    </div>
-  </div>
+      <div class="field">
+        <label class="label is-left">Password</label>
+        <div class="control">
+          <input
+            class="input is-right"
+            type="password"
+            name="password"
+            autocomplete
+            required
+            ngModel
+          />
+        </div>
+      </div>
 
-  <input type = "submit" class="button is-success" value = "login">
-</form>
-</div>
-<div class="column">
-</div>
+      <input type="submit" class="button is-success" value="Login" />
+    </form>
+  </div>
+  <div class="column"></div>
 </div>
