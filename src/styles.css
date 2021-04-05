@@ -1,11 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-/* html, body {
-    background-color: bisque;
-    min-height: 100%;
-    height: auto;
-    margin: 0;
-  } */
-  @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
   html, body {
     background-color: bisque;
     min-height: 100vh;
@@ -15,14 +8,8 @@
     word-spacing: 3px;
   }
   
-    input::-webkit-calendar-picker-indicator {
-      display: none;
-    }
-    .title {
-      font-family: cursive;
-      letter-spacing: 5px;
-    } 
-    
+   
+   
     
       
     

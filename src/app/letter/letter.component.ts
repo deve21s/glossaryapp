@@ -16,9 +16,8 @@ export class LetterComponent implements OnInit {
   constructor(private data: DataService, private route : ActivatedRoute) { }
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      
       this.id = params.get('id')
-    if(this.id !== 'all'){
+    if(this.id != 'all'){
       this.data.getDataByletter(this.id).subscribe( (res) => {
         this.letter = res;
       })

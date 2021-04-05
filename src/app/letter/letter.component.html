@@ -3,7 +3,7 @@
   <div class="columns is-centerd">
     <div class="column has-text-centered">
       <h1 class="tag is-rounded title is-3 has-text-weight-light" *ngIf='id!=undefined && id!="all"'>Term start's with '{{id}}'</h1>
-      <h1 class="tag is-rounded title is-3 has-text-weight-light" *ngIf='id== "all"'>All Term's</h1>
+      <h1 class="tag is-rounded title is-3 has-text-weight-light" *ngIf='id == "all"'>All Term's</h1>
     </div>
   </div>
   
@@ -19,7 +19,7 @@
     </nav>
   </div>
   
-  <div *ngIf="letter.length !== 0" class="columns is-mobile is-multiline is-centered">
+  <div *ngIf="letter !== 'undefined'" class="columns is-mobile is-multiline is-centered">
     <div *ngFor="let i of letter | filter : filter | paginate: { itemsPerPage: 9, currentPage: p }" class="column m-1 card is-three-quarters-mobile
       is-two-thirds-tablet
       is-half-desktop
@@ -38,10 +38,12 @@
       </footer>
     </div>
   </div>
-  <div class="has-text-centered m-5" *ngIf="letter.length != 0">
+  
+  <div class="has-text-centered m-5" *ngIf="letter.length != '0' ">
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div> 
-  <div *ngIf="letter.length == 0" class="box title is-1 has-text-centered ">
+
+  <div *ngIf="letter.length == '0' " class="box title is-1 has-text-centered ">
       Data Not avilable
   </div>
 </div>

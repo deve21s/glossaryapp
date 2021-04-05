@@ -1,5 +1,5 @@
 <br>
-<nav class="navbar is-fixed-top m-5" role="navigation" aria-label="main navigation">
+<nav class="navbar is-fixed-top m-2" role="navigation" aria-label="main navigation">
   <div class="navbar-brand columns is-vcentered">
     <div class="column">
     <a class="navbar-item" routerLink="" class="ml-3  title is-3 tags is-small is-centered mt-3">
@@ -19,19 +19,6 @@
             Log out
           </a>
           <div class="field has-addons">
-            <!-- <form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)">
-              <div class="field has-addons has-addons-centered">
-                <p class="control">
-                  <input class="input" list="brow" name="title" #name  required ngModel>
-                  <datalist id="brow">
-                    <option *ngFor="let a of letter" routerLink="/{{a._id}}/{{a.title}}" value="{{a.title}}">
-                  </datalist>
-                </p>
-                <p class="control">
-                  <a class="button is-success" routerLink="/search/{{name.value}}">search</a>
-                </p>
-              </div>
-            </form> -->
             
           </div>
         </div>
@@ -44,37 +31,3 @@
   <br>  
 
 <router-outlet></router-outlet>
-
-<!-- 
-<div class="ais-InstantSearch">
-  <h1>Angular InstantSearch e-commerce demo</h1>
-  <ais-instantsearch [config]="config">
-    <div class="left-panel">
-      <ais-current-refinements></ais-current-refinements>
-      <h2>title</h2>
-      <ais-refinement-list attribute="title"></ais-refinement-list>
-      <ais-configure [searchParameters]="{ hitsPerPage:  8 }"></ais-configure>
-    </div>
-    <div class="right-panel">
-      <ais-search-box></ais-search-box>
-      <br>
-      <ais-hits>
-        <ng-template let-hits="hits">
-          <ol class="ais-Hits-list card">
-            <li *ngFor="let hit of hits" class="ais-Hits-item">
-              <div class="hit-name card-header-title">
-                <ais-highlight class="card-header-title is-centerd" attribute="title" [hit]="hit"></ais-highlight>
-              </div>
-              <div class="hit-description">
-                <ais-highlight attribute="details" [hit]="hit"></ais-highlight>
-              </div>
-              
-              <button class="button" routerLink="/{{hit._id}}/{{hit.title}}">view</button>
-            </li>
-          </ol>
-        </ng-template>
-      </ais-hits>
-      <ais-pagination></ais-pagination>
-    </div>
-  </ais-instantsearch>
-</div> -->

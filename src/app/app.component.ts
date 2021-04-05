@@ -17,13 +17,8 @@ export class AppComponent {
   
   
   constructor(private localst : LocalStorageService,private router: Router,private data: DataService) {}
-  config = {
-    apiKey: '9f9346138a25eb026e745e8193448322',
-    appId: '4E5ID5Z9QX',
-    indexName: 'dev_deven',
-    routing: true
-  }
-  title = 'glossaryapp';
+  
+ 
   ngOnInit() {
     this.data.getData().subscribe( (res)=> {
       this.letter = res;
@@ -56,9 +51,7 @@ export class AppComponent {
         console.log(err)
       })
   }
-  keyevent(){
-    console.log('hello')
-  }
+ 
 
 
 }

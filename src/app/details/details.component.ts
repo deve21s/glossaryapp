@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {NgForm} from '@angular/forms';
 
 
-
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -29,7 +28,6 @@ export class DetailsComponent implements OnInit {
     if(this.id){
     this.data.getDataByid(this.id).subscribe( (res)=> {
       this.word = res;
-      console.log(res)
     })
     
     }
