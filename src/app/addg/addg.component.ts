@@ -4,6 +4,7 @@ import { Route, Router } from '@angular/router'
 import {NgForm} from '@angular/forms';
 import { from } from 'rxjs';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 
 
@@ -84,11 +85,11 @@ addreleted(){
   reldiv.appendChild(rellink);
 }
 
-  constructor(private data : DataService, private router: Router, private fb : FormBuilder) { }
+  constructor(private data : DataService, private router: Router, private fb : FormBuilder, private title : Title) { }
   glossaryForm: FormGroup;
 
   ngOnInit() {
-
+    this.title.setTitle(`Glossary App - AddGlossary`)
     /* Initiate the form structure */
     this.glossaryForm = this.fb.group({
       title: [],

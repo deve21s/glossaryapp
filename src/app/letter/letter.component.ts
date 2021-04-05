@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../data.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-letter',
   templateUrl: './letter.component.html',
@@ -13,8 +14,9 @@ export class LetterComponent implements OnInit {
   p : number = 1
   filter
   
-  constructor(private data: DataService, private route : ActivatedRoute) { }
+  constructor(private data: DataService, private route : ActivatedRoute, private title : Title) { }
   ngOnInit(): void {
+    this.title.setTitle(`Glossary App - Home`)
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.id = params.get('id')
     if(this.id != 'all'){

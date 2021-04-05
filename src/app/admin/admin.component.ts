@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../data.service';
 import { ActivatedRoute, Router, ParamMap } from "@angular/router";
+import { Title } from '@angular/platform-browser';
 
 
 
@@ -18,10 +19,12 @@ export class AdminComponent implements OnInit {
   p: number = 1;
   
   
+  
 
-  constructor(private route : ActivatedRoute, private data : DataService, private router: Router) { }
+  constructor(private route : ActivatedRoute, private data : DataService, private router: Router, private title : Title) { }
 
   ngOnInit(): void {
+    this.title.setTitle(`Glossary App - Admin`)
     this.data.getData().subscribe( (res) => {
       this.alldata = res
     } )

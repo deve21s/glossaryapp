@@ -4,6 +4,7 @@ import {NgForm} from '@angular/forms';
 import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 import { Router } from '@angular/router'
 import { from } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,9 +13,10 @@ import { from } from 'rxjs';
 export class LoginComponent implements OnInit {
   body = null;
   
-  constructor(private data: DataService,private localSt:LocalStorageService, private router : Router) { }
+  constructor(private data: DataService,private localSt:LocalStorageService, private router : Router, private title : Title) { }
 
   ngOnInit(): void { 
+    this.title.setTitle(`Glossary App - Login`)
   }
   onSubmit(form: NgForm) {
     this.body = form.value;
