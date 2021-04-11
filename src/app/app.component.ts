@@ -20,11 +20,6 @@ export class AppComponent {
   
  
   ngOnInit() {
-    this.data.getData().subscribe( (res)=> {
-      this.letter = res;
-    })
-   this.body = this.body
-   this.searchres = this.searchres
   }
   
   
