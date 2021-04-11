@@ -1,8 +1,10 @@
-.container {
-    width: 85%;
-}
 
-#commentform {
-    background-color:aliceblue;
-    
+
+#commentform{
+    margin: auto;
+    border-radius: 3%;
+    background-image: url(../../assets/trianglify.png);
+    background-attachment: fixed;
+    background-size: cover;
+    border: 3px solid lightcoral;
 }

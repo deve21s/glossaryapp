@@ -3,13 +3,11 @@
     background-image: url(./assets/trianglify-lowres.png);
     background-attachment: fixed;
     background-size: cover;
-    min-height: 100vh;
-    max-height: fit-content;
-    height: auto;
     letter-spacing: 1.5px;
     word-spacing: 3px;
   }
   
+
    
    
     

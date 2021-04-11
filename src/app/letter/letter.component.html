@@ -15,7 +15,7 @@
 
   <div class="has-text-centered box">
     <nav class="">
-      <input class="input" type="text" name="search" [(ngModel)]="filter" placeholder="search here ......">      
+      <input class="input" type="text" name="search" [(ngModel)]="filter" placeholder="Search Glossary">      
     </nav>
   </div>
   
@@ -39,7 +39,7 @@
     </div>
   </div>
   
-  <div class="has-text-centered m-5" *ngIf="letter.length != '0' ">
+  <div class="has-text-centered paginate" *ngIf="letter.length != '0' ">
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div> 
 

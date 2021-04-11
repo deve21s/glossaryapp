@@ -14,8 +14,18 @@
 .box {
     background-color: black;
 }
+
 .input {
     text-align: center;
     width: 80%;
     align-content: center;
+}
+  
+.paginate{
+    border: 3px solid rgb(67, 214, 87);
+    border-radius: 10px;
+    padding-top: 15px;
+    background-image: url('../../assets/trianglify.png');
+    background-attachment: fixed;
+    background-size: cover;
 }
