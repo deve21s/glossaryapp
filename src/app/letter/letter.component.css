@@ -19,13 +19,20 @@
     text-align: center;
     width: 80%;
     align-content: center;
+    border: 3px solid rgb(255, 146, 5) !important;
+    font-size:large
+}
+a {
+    text-transform: uppercase;    
 }
   
 .paginate{
     border: 3px solid rgb(67, 214, 87);
     border-radius: 10px;
     padding-top: 15px;
-    background-image: url('../../assets/trianglify.png');
-    background-attachment: fixed;
+    background-image: url('../../assets/trianglify-lowres.png');
     background-size: cover;
+}
+.is-active{
+    border: 3px solid rgb(0, 247, 255) !important;
 }
