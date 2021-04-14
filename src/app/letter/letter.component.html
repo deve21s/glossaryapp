@@ -25,17 +25,16 @@
       is-half-desktop
       is-one-third-widescreen
       is-one-quarter-fullhd is-vcentered">
+      <a routerLink="/{{i._id}}/{{i.title}}">
       <header class="card-header">
         <p class="card-header-title is-centerd is-rounded">
           {{i.title}}
         </p>
       </header>
-      <div class="card-content">
-        <div [innerHTML]="i.details.substr(0,100)"></div>
+      <div class="card-content" [innerHTML]="i.details">
+        <!-- <div [innerHTML]="i.details.substr(0,100)"></div> -->
       </div>
-      <footer class="card-footer ">
-        <a routerLink="/{{i._id}}/{{i.title}}" class="card-footer-item button is-light">details</a>
-      </footer>
+    </a>
     </div>
   </div>
   

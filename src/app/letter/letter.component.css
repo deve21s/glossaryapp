@@ -22,8 +22,10 @@
     border: 3px solid rgb(255, 146, 5) !important;
     font-size:large
 }
-a {
-    text-transform: uppercase;    
+.card-content{
+    color: rgb(0, 0, 0);
+    max-height: 10rem;
+    overflow:auto;
 }
   
 .paginate{
