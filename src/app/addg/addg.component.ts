@@ -18,72 +18,72 @@ export class AddgComponent implements OnInit {
   id: any;
   value
   
-  addrefrence(){
-    let refSeq = 2
-    var refdiv = document.getElementById("refdiv");
+//   addrefrence(){
+//     let refSeq = 2
+//     var refdiv = document.getElementById("refdiv");
 
-    var reflink = document.createElement("input")
-    reflink.type = "text";
-    reflink.className = "input"
-    reflink.id = "ref_link" + refSeq
-    reflink.name = "ref_link" + refSeq
-    reflink.setAttribute('ngModel', '')
+//     var reflink = document.createElement("input")
+//     reflink.type = "text";
+//     reflink.className = "input"
+//     reflink.id = "ref_link" + refSeq
+//     reflink.name = "ref_link" + refSeq
+//     reflink.setAttribute('ngModel', '')
 
-    var reflink_lable = document.createElement('Label')
-    reflink_lable.setAttribute("for", "ref_link" + refSeq)
-    reflink_lable.textContent = "Refrences - Link"
+//     var reflink_lable = document.createElement('Label')
+//     reflink_lable.setAttribute("for", "ref_link" + refSeq)
+//     reflink_lable.textContent = "Refrences - Link"
 
-    var refname = document.createElement("input")
-    refname.type = "text";
-    refname.className = "input"
-    refname.id = "ref_name" + refSeq
-    refname.name = "ref_name" + refSeq
-    refname.setAttribute('ngModel', '')
+//     var refname = document.createElement("input")
+//     refname.type = "text";
+//     refname.className = "input"
+//     refname.id = "ref_name" + refSeq
+//     refname.name = "ref_name" + refSeq
+//     refname.setAttribute('ngModel', '')
 
-    var refname_lable = document.createElement('Label')
-    refname_lable.setAttribute("for", "ref_name" + refSeq)
-    refname_lable.textContent = "Refrences - Name"
+//     var refname_lable = document.createElement('Label')
+//     refname_lable.setAttribute("for", "ref_name" + refSeq)
+//     refname_lable.textContent = "Refrences - Name"
 
 
-    refSeq++;
-    refdiv.appendChild(refname_lable)
-    refdiv.appendChild(refname);
-    refdiv.appendChild(reflink_lable)
-    refdiv.appendChild(reflink);    
-}
+//     refSeq++;
+//     refdiv.appendChild(refname_lable)
+//     refdiv.appendChild(refname);
+//     refdiv.appendChild(reflink_lable)
+//     refdiv.appendChild(reflink);    
+// }
 
-addreleted(){
-  let relSeq = 2;
-  var reldiv = document.getElementById("reldiv");
+// addreleted(){
+//   let relSeq = 2;
+//   var reldiv = document.getElementById("reldiv");
 
-  var rellink = document.createElement("input")
-  rellink.type = "text";
-  rellink.className = "input"
-  rellink.id = "rel_link"
-  rellink.name = "rel_link" + relSeq
-  rellink.setAttribute('ngModel', '')
+//   var rellink = document.createElement("input")
+//   rellink.type = "text";
+//   rellink.className = "input"
+//   rellink.id = "rel_link"
+//   rellink.name = "rel_link" + relSeq
+//   rellink.setAttribute('ngModel', '')
 
-  var rellink_lable = document.createElement('Label')
-  rellink_lable.setAttribute("for", "rel_link" + relSeq)
-  rellink_lable.textContent = "Related - Link:"
+//   var rellink_lable = document.createElement('Label')
+//   rellink_lable.setAttribute("for", "rel_link" + relSeq)
+//   rellink_lable.textContent = "Related - Link:"
 
-  var relname = document.createElement("input")
-  relname.type = "text";
-  relname.className = "input"
-  relname.id = "rel_name" + relSeq
-  relname.name = "rel_name" + relSeq
-  relname.setAttribute('ngModel', '')
+//   var relname = document.createElement("input")
+//   relname.type = "text";
+//   relname.className = "input"
+//   relname.id = "rel_name" + relSeq
+//   relname.name = "rel_name" + relSeq
+//   relname.setAttribute('ngModel', '')
 
-  var relname_lable = document.createElement('Label')
-  relname_lable.setAttribute("for", "rel_name" + relSeq)
-  relname_lable.textContent = "Related - Name:"
+//   var relname_lable = document.createElement('Label')
+//   relname_lable.setAttribute("for", "rel_name" + relSeq)
+//   relname_lable.textContent = "Related - Name:"
 
-  relSeq++;
-  reldiv.appendChild(relname_lable)
-  reldiv.appendChild(relname);
-  reldiv.appendChild(rellink_lable)
-  reldiv.appendChild(rellink);
-}
+//   relSeq++;
+//   reldiv.appendChild(relname_lable)
+//   reldiv.appendChild(relname);
+//   reldiv.appendChild(rellink_lable)
+//   reldiv.appendChild(rellink);
+// }
 
   constructor(private data : DataService, private router: Router, private fb : FormBuilder, private title : Title) { }
   glossaryForm: FormGroup;

@@ -25,6 +25,7 @@
         </div>
       </div>
 
+      <span class="commentmassage" *ngIf="word.comments.length == 0">Become first-one to comment on this glossary.</span>
       <div id="commentform" class="columns is-centered">
         <div class="column is-half-desktop">
         <form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)">
@@ -40,7 +41,7 @@
                       <textarea class="textarea" id="details" name="text" placeholder="comment .." ngModel required></textarea>
                     </div>
                 </div>
-              <input type="submit" [disabled]="!myform.valid" class="button is-link is-green" value="submit comment" />            
+              <input type="submit" [disabled]="!myform.valid" class="button is-link is-green" value="Add comment" />            
           </form>
         </div>
       </div>

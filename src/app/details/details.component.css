@@ -8,3 +8,12 @@
     background-size: cover;
     border: 3px solid lightcoral;
 }
+.commentmassage{
+    display: flex;
+    justify-content: center;
+    flex: row wrap;
+    background-color: black;
+    color: antiquewhite;
+    border: 1px solid saddlebrown;
+    margin: 1em;
+}
