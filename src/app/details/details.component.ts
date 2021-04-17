@@ -80,9 +80,7 @@ export class DetailsComponent implements OnInit {
     this.body = form.value;
     console.log(this.body);
       this.data.makecomment(this.id ,this.body).subscribe(res => {
-        console.log(res);
         location.reload();
-        
       },
       err => {
         location.reload();
