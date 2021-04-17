@@ -1,31 +1,31 @@
 <div class="container mb-0">
     <div class="box">
     <div class="has-text-centered">
-      <h1 class="title is-size-4-mobile is-size-1-desktop is-capitalized">{{word.title}}</h1>
+      <h1 class="title is-size-4-mobile is-size-1-desktop is-capitalized">{{word?.title}}</h1>
     </div>
     <br>
     
-    <div class="box p-5 m-3" [innerHTML]="word.details"></div>
+    <div class="box p-5 m-3" [innerHTML]="word?.details"></div>
     <br><br>
     <h1 class="title is-5">Refrences :</h1>
-      <div *ngFor="let r of word.ref">
+      <div *ngFor="let r of word?.ref">
       <a target="_blank" class="tag is-rounded" href="{{r.link}}">{{r.name}}</a>
       </div>
         <h1 class="title is-7"></h1>
         <h1 class="title is-5">Related :</h1>
-          <div *ngFor="let r of word.rel">
+          <div *ngFor="let r of word?.rel">
             <a class="tag is-rounded" routerLink="/{{r.link}}">{{r.name}}</a>
           </div>
       </div>
       <div class="mb-3 box has-text-centered">
         <h3 class="title is-3 ">Is this helpfull for you?</h3>
         <div class="has-text-centered">
-          <button (click)= "like()" [disabled]="dlike" class="button  mr-2 is-info">Like - {{word.likes.likeCount}}</button>
-          <button (click)= "dislike()" [disabled]="dlike" class="button is-info">Dislike - {{word.likes.disLike}}</button>
+          <button (click)= "like()" [disabled]="dlike" class="button  mr-2 is-info">Like - {{word?.likes.likeCount}}</button>
+          <button (click)= "dislike()" [disabled]="dlike" class="button is-info">Dislike - {{word?.likes.disLike}}</button>
         </div>
       </div>
 
-      <span class="commentmassage" *ngIf="word.comments.length == 0">Become first-one to comment on this glossary.</span>
+      <span class="commentmassage" *ngIf="word?.comments.length == 0">Become first-one to comment on this glossary.</span>
       <div id="commentform" class="columns is-centered">
         <div class="column is-half-desktop">
         <form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)">
@@ -46,11 +46,11 @@
         </div>
       </div>
 
-      <div class="has-text-centered" *ngIf="word.comments.length !== 0 ">
+      <div class="has-text-centered" *ngIf="word?.comments.length !== 0 ">
         <h1 class="title is-1 has-center">Commnets</h1>
       </div>
 
-      <div *ngFor="let r of word.comments">
+      <div *ngFor="let r of word?.comments">
         <div class="card m-2 p-2">
           <div class="field">
             <a (click)="show(replyform)" class="button is-small is-pulled-right is-danger">reply</a>

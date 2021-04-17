@@ -13,10 +13,9 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { EditpComponent } from './editp/editp.component';
-import { SearchComponent } from './search/search.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { NgAisModule } from 'angular-instantsearch';
+// import { NgAisModule } from 'angular-instantsearch';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilterPipe } from './filter.pipe';
 import { Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -42,7 +41,6 @@ const DEFAULT_QUILL_CONFIG: QuillConfigInterface = {
     AddgComponent,
     LoginComponent,
     EditpComponent,
-    SearchComponent,
     FilterPipe,
   ],
   imports: [
@@ -51,7 +49,7 @@ const DEFAULT_QUILL_CONFIG: QuillConfigInterface = {
     HttpClientModule,
     FormsModule,
     NgxWebstorageModule.forRoot(),
-    NgAisModule.forRoot(),
+    // NgAisModule.forRoot(),
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,

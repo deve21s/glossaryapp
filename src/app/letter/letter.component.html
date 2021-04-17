@@ -64,11 +64,11 @@
     </div>
   </div>
 
-  <div class="has-text-centered paginate" *ngIf="letter.length != '0'">
+  <div class="has-text-centered paginate" *ngIf="letter != null && letter.length > 0">
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 
-  <div *ngIf="letter.length == '0'" class="box title is-1 has-text-centered">
+  <div *ngIf="letter != null && letter.length < 1" class="box title is-1 has-text-centered">
     Data Not avilable
   </div>
 </div>
