@@ -1,106 +1,102 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../data.service';
+import { DataService } from '../data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
-
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
   word = null;
   id = null;
-  myform
-  body
-  showhide = "none"
-  dlike = false
+  myform;
+  body;
+  showhide = 'none';
+  dlike = false;
 
-  
-  constructor(private route: ActivatedRoute,private data: DataService, private router : Router, private title : Title) { }
-  
+  constructor(
+    private route: ActivatedRoute,
+    private data: DataService,
+    private router: Router,
+    private title: Title
+  ) {}
+
   ngOnInit(): void {
-    
     this.id = this.route.snapshot.params.id;
-    this.title.setTitle(`Glossary App - Details `)
+    this.title.setTitle(`Glossary App - Details `);
 
-    if(this.id){
-    this.data.getDataByid(this.id).subscribe( (res)=> {
-      this.word = res;
-    })
-    
+    if (this.id) {
+      this.data.getDataByid(this.id).subscribe((res) => {
+        this.word = res;
+      });
     }
-    
-
   }
 
   show(replyform) {
-    this.showhide = 'block'
+    this.showhide = 'block';
   }
   hide() {
-    this.showhide = 'none'
+    this.showhide = 'none';
   }
   dilike() {
-    this.dlike = !this.dlike
+    this.dlike = !this.dlike;
   }
-  like () {
-    this.data.like(this.id ,this.body).subscribe(res => {
-      console.log(res);
-      this.dilike()
-      location.reload();
-      
-      
-    },
-    err => {
-      this.dilike()
-      location.reload();
-      
-    })
-
+  like() {
+    this.data.like(this.id, this.body).subscribe(
+      (res) => {
+        console.log(res);
+        this.dilike();
+        location.reload();
+      },
+      (err) => {
+        this.dilike();
+        location.reload();
+      }
+    );
   }
-  dislike () {
-    this.data.dislike(this.id ,this.body).subscribe(res => {
-      console.log(res);
-      this.dilike()
-      location.reload();
-      
-      
-    },
-    err => {
-      this.dilike()
-      location.reload();
-      
-    })
-
+  dislike() {
+    this.data.dislike(this.id, this.body).subscribe(
+      (res) => {
+        console.log(res);
+        this.dilike();
+        location.reload();
+      },
+      (err) => {
+        this.dilike();
+        location.reload();
+      }
+    );
   }
 
   onSubmit(form: NgForm) {
     this.body = form.value;
     console.log(this.body);
-      this.data.makecomment(this.id ,this.body).subscribe(res => {
+    this.data.makecomment(this.id, this.body).subscribe(
+      (res) => {
         location.reload();
       },
-      err => {
+      (err) => {
         location.reload();
-      })
+      }
+    );
   }
-  onReply(form : NgForm) {
+  onReply(form: NgForm) {
     this.body = form.value;
-    console.log(this.body)
-    const {name , text , cid} = this.body
-    const body = new Object ({name, text})
-    console.log(body)
-    this.data.makereply(cid ,body).subscribe(res => {
-      console.log(res);
-       location.reload();
-      
-    },
-    err => {
-       location.reload();
-    })
-  } 
-
-
+    console.log(this.body);
+    const { name, text, cid } = this.body;
+    const body = new Object({ name, text });
+    console.log(body);
+    this.data.makereply(cid, body).subscribe(
+      (res) => {
+        console.log(res);
+        location.reload();
+      },
+      (err) => {
+        location.reload();
+      }
+    );
+  }
 }

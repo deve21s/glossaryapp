@@ -1,33 +1,47 @@
-<br>
-<nav class="navbar is-fixed-top m-2" role="navigation" aria-label="main navigation">
+<br />
+<nav
+  class="navbar is-fixed-top m-2"
+  role="navigation"
+  aria-label="main navigation"
+>
   <div class="navbar-brand columns is-vcentered">
     <div class="column">
-    <a class="navbar-item logoname" routerLink="" class="ml-3  title is-3 tags is-small is-centered mt-3">
-      Glossary
-    </a>
+      <a
+        class="navbar-item logoname"
+        routerLink=""
+        class="ml-3 title is-3 tags is-small is-centered mt-3"
+      >
+        Glossary
+      </a>
     </div>
   </div>
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          
-          <a *ngIf="islogin() === 'login'" routerLink="/login" class="button is-primary">
+          <a
+            *ngIf="islogin() === 'login'"
+            routerLink="/login"
+            class="button is-primary"
+          >
             Log in
           </a>
-          <a *ngIf="islogin() === 'logout'" routerLink="/logout" (click)="logout()" class="button is-primary">
+          <a
+            *ngIf="islogin() === 'logout'"
+            routerLink="/logout"
+            (click)="logout()"
+            class="button is-primary"
+          >
             Log out
           </a>
-          <div class="field has-addons">
-            
-          </div>
+          <div class="field has-addons"></div>
         </div>
       </div>
     </div>
   </div>
 </nav>
-<br>
-<br>
-  <br>  
+<br />
+<br />
+<br />
 
 <router-outlet></router-outlet>

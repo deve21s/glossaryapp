@@ -1,10 +1,15 @@
-<h1 class="has-text-centered title is-3">
-Login
-</h1>
-<div class="columns is-multiline is-centered is-1-mobile is-3-tablet is-3-desktop is-8-widescreen is-2-fullhd">
+<h1 class="has-text-centered title is-3">Login</h1>
+<div
+  class="columns is-multiline is-centered is-1-mobile is-3-tablet is-3-desktop is-8-widescreen is-2-fullhd"
+>
   <!-- <div class="column"></div> -->
   <div class="column box is-half login-box">
-    <form class="form" [formGroup]="loginForm" #myform = "ngForm" (ngSubmit) = "onSubmit(myform)">
+    <form
+      class="form"
+      [formGroup]="loginForm"
+      #myform="ngForm"
+      (ngSubmit)="onSubmit(myform)"
+    >
       <div class="field">
         <label class="label is-left">Email</label>
         <div class="control">
@@ -17,25 +22,27 @@ Login
             autofocus
           />
         </div>
-        
-          <span *ngIf="email.touched && email.invalid">email is not valid</span>
-        
+
+        <span *ngIf="email.touched && email.invalid">email is not valid</span>
       </div>
 
       <div class="field">
         <label class="label is-left">Password</label>
         <div class="control">
           <input
-          formControlName="password"
+            formControlName="password"
             class="input is-right"
             type="password"
             name="password"
             autocomplete
             required
           />
-          
-            <span *ngIf="password.invalid && password.touched" class="message mt-2">make sure password is of length 6</span>
-          
+
+          <span
+            *ngIf="password.invalid && password.touched"
+            class="message mt-2"
+            >make sure password is of length 6</span
+          >
         </div>
       </div>
 

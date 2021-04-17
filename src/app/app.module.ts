@@ -4,14 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LetterComponent } from './letter/letter.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { from } from 'rxjs';
 import { DetailsComponent } from './details/details.component';
 import { AdminComponent } from './admin/admin.component';
 import { AddgComponent } from './addg/addg.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import {NgxWebstorageModule} from 'ngx-webstorage';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 import { EditpComponent } from './editp/editp.component';
 import { SearchComponent } from './search/search.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -28,11 +28,10 @@ import { QuillConfigInterface } from 'ngx-quill-wrapper';
 const DEFAULT_QUILL_CONFIG: QuillConfigInterface = {
   theme: 'snow',
   modules: {
-    toolbar: true
+    toolbar: true,
   },
-  placeholder: 'Empty canvas'
+  placeholder: 'Empty canvas',
 };
-
 
 @NgModule({
   declarations: [
@@ -44,8 +43,7 @@ const DEFAULT_QUILL_CONFIG: QuillConfigInterface = {
     LoginComponent,
     EditpComponent,
     SearchComponent,
-    FilterPipe
-    
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -57,18 +55,15 @@ const DEFAULT_QUILL_CONFIG: QuillConfigInterface = {
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
-    QuillModule
+    QuillModule,
   ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA,
-    NO_ERRORS_SCHEMA
-  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   providers: [
     {
       provide: QUILL_CONFIG,
-      useValue: DEFAULT_QUILL_CONFIG
-    }
+      useValue: DEFAULT_QUILL_CONFIG,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
