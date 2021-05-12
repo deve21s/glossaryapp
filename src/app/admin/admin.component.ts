@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-admin',
@@ -13,23 +12,23 @@ export class AdminComponent implements OnInit {
   id = null;
   count = null;
   filter;
+  token = null;
   p: number = 1;
 
   constructor(
     private route: ActivatedRoute,
     private data: DataService,
-    private router: Router,
-    private title: Title
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.title.setTitle(`Glossary App - Admin`);
     this.data.getData().subscribe((res) => {
       this.alldata = res;
     });
 
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.id = params.get('id');
+      this.token = params.get('token');
     });
   }
 

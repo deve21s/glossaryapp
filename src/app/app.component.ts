@@ -45,4 +45,14 @@ export class AppComponent {
       }
     );
   }
+  loginradius(){
+    this.data.loginfirst().subscribe(
+      (res) => {
+        console.log(res)
+      },
+      (err) => {
+        console.log('error')
+      }
+    )
+  }
 }

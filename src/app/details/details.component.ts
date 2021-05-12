@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-details',
@@ -20,13 +19,11 @@ export class DetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private data: DataService,
-    private router: Router,
-    private title: Title
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
-    this.title.setTitle(`Glossary App - Details `);
 
     if (this.id) {
       this.data.getDataByid(this.id).subscribe((res) => {

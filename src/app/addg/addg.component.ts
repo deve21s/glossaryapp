@@ -1,35 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { Route, Router } from '@angular/router'
-import {NgForm} from '@angular/forms';
+import { Route, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 import { from } from 'rxjs';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
-
-
 
 @Component({
   selector: 'app-addg',
   templateUrl: './addg.component.html',
-  styleUrls: ['./addg.component.css']
+  styleUrls: ['./addg.component.css'],
 })
 export class AddgComponent implements OnInit {
   body: any;
   id: any;
-  value
- 
-  constructor(private data : DataService, private router: Router, private fb : FormBuilder, private title : Title) { }
+  value;
+
+  constructor(
+    private data: DataService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {}
   glossaryForm: FormGroup;
 
   ngOnInit() {
-    this.title.setTitle(`Glossary App - AddGlossary`)
     /* Initiate the form structure */
     this.glossaryForm = this.fb.group({
       title: [],
       details: [],
-      ref: this.fb.array([this.fb.group({name:'',link:''})]),
-      rel: this.fb.array([this.fb.group({name:'',link:''})])
-    })
+      ref: this.fb.array([this.fb.group({ name: '', link: '' })]),
+      rel: this.fb.array([this.fb.group({ name: '', link: '' })]),
+    });
   }
   // ngOnInit(): void {
 
@@ -41,14 +41,14 @@ export class AddgComponent implements OnInit {
     return this.glossaryForm.get('rel') as FormArray;
   }
   addSellingPoint() {
-    this.ref.push(this.fb.group({name:'',link:''}));
+    this.ref.push(this.fb.group({ name: '', link: '' }));
   }
 
   deleteSellingPoint(index) {
     this.ref.removeAt(index);
   }
   addrel() {
-    this.rel.push(this.fb.group({name:'',link:''}));
+    this.rel.push(this.fb.group({ name: '', link: '' }));
   }
 
   deleterel(index) {
@@ -60,12 +60,13 @@ export class AddgComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.body = this.glossaryForm.value;
-      this.data.addData(this.body).subscribe(res => {
-        this.router.navigateByUrl("admin");
+    this.data.addData(this.body).subscribe(
+      (res) => {
+        this.router.navigateByUrl('admin');
       },
-      err => {
-        this.router.navigateByUrl("admin");
-      })
+      (err) => {
+        this.router.navigateByUrl('admin');
+      }
+    );
   }
-
 }

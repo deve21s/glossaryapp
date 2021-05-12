@@ -57,8 +57,9 @@
             {{ i.title }}
           </p>
         </header>
-        <div class="card-content" [innerHTML]="i.details">
+        <div class="card-content">
           <!-- <div [innerHTML]="i.details.substr(0,100)"></div> -->
+          {{i.details}}
         </div>
       </a>
     </div>

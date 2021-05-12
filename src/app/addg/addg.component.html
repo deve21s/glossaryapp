@@ -27,7 +27,7 @@
   </div>
   
   <div class="field box" formArrayName="ref">
-    <div class="mb-3 box" *ngFor="let item of ref.controls; let pointIndex=index" [formGroupName]="pointIndex">
+    <div class="mb-3 box" id="refernces" *ngFor="let item of ref.controls; let pointIndex=index" [formGroupName]="pointIndex">
       <label class="label">Refernces - Name:</label>
       <input  class="input is-rounded" id="ref" formControlName="name" required/>
 
@@ -39,7 +39,7 @@
   </div>
 
   <div class="field box" formArrayName="rel">
-    <div class="mb-3 box" *ngFor="let item of rel.controls; let pointIndex=index" [formGroupName]="pointIndex">
+    <div class="mb-3 box" id="refernces" *ngFor="let item of rel.controls; let pointIndex=index" [formGroupName]="pointIndex">
       <label class="label">Related - Name:</label>
       <input  class="input is-rounded" id="ref" formControlName="name" required/>
 

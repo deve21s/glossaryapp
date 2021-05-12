@@ -3,8 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { from } from 'rxjs';
 import { DataService } from '../data.service'
 import{ FormBuilder, FormArray, FormGroup, NgForm, FormControl } from '@angular/forms'
-import { Title } from '@angular/platform-browser';
-
 
 @Component({
   selector: 'app-editp',
@@ -79,14 +77,12 @@ addreleted(){
 }
 
 
-  constructor(private data : DataService, private route : ActivatedRoute, private router: Router, private fb: FormBuilder, private title : Title) { }
+  constructor(private data : DataService, private route : ActivatedRoute, private router: Router, private fb: FormBuilder) { }
   glossaryForm : FormGroup
  
 
 
   ngOnInit(): void {
-
-    this.title.setTitle(`Glossary App - EditGlossary`)
     // this.glossaryForm = this.fb.group({
     //   title: '',
     //   details : '',

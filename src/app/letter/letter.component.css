@@ -38,3 +38,7 @@
 .is-active{
     border: 3px solid rgb(0, 247, 255) !important;
 }
+
+.column.card {
+    margin: 2px;
+}

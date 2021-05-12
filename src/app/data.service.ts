@@ -72,4 +72,8 @@ export class DataService {
       return false;
     }
   }
+  loginfirst(){
+    let end = 'https://dev-bw4tzgej5i5.hub.loginradius.com/auth.aspx?action=register&return_url=https://localhost:4200/login'
+    return this.http.get(end);
+  }
 }

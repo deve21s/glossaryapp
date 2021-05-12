@@ -4,7 +4,8 @@ import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
-import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,16 +13,25 @@ import { Title } from '@angular/platform-browser';
 })
 export class LoginComponent implements OnInit {
   body = null;
+  token
+  apiResponse
 
   constructor(
     private data: DataService,
     private localSt: LocalStorageService,
     private router: Router,
-    private title: Title
-  ) {}
+    private activatedRoute: ActivatedRoute
+
+  ) {
+    this.token = "";
+    this.apiResponse = "";
+  }
 
   ngOnInit(): void {
-    this.title.setTitle(`Glossary App - Login`);
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.token = params['token'];
+      console.log(this.token)
+    })
   }
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
