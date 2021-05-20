@@ -75,8 +75,8 @@ export class DataService {
     let token = this.local.retrieve('user')
     if (token) {
       let decode = jwtDecode(token)
-      let { Roles } = decode
-      if(Roles === "user"){
+      console.log(decode["Roles"])
+      if(decode["Roles"] === "user"){
         return true;
       }
       return false
