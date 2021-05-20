@@ -34,16 +34,6 @@ export class LoginComponent implements OnInit {
       console.log(this.token)
     })
   }
-  loginradius(){
-    this.data.loginfirst().subscribe(
-      (res) => {
-        console.log(res)
-      },
-      (err) => {
-        console.log('error')
-      }
-    )
-  }
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
@@ -64,12 +54,11 @@ export class LoginComponent implements OnInit {
       (res) => {
         this.localSt.store('user', res);
         this.router.navigateByUrl('admin');
-        console.log("here")
       },
       (err) => {
         this.massage = err.error.text
         console.log(err.error.text)
-        // this.router.navigateByUrl('login');
+         this.router.navigateByUrl('login');
       }
     );
   }

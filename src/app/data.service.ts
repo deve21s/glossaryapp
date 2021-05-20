@@ -75,7 +75,6 @@ export class DataService {
     let token = this.local.retrieve('user')
     if (token) {
       let decode = jwtDecode(token)
-      console.log(decode["Roles"])
       if(decode["Roles"] === "user"){
         return true;
       }
@@ -84,9 +83,5 @@ export class DataService {
     } else {
       return false;
     }
-  }
-  loginfirst(){
-    let end = 'https://dev-bw4tzgej5i5.hub.loginradius.com/auth.aspx?action=register&return_url=http://localhost:4200/login'
-    return this.http.get(end);
   }
 }

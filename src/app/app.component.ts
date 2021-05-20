@@ -33,9 +33,4 @@ export class AppComponent {
     this.localst.clear('user');
     return this.router.navigateByUrl('');
   }
-  loginradius(){
-    this.data.loginfirst().subscribe(result => {
-      console.log(result)
-    })
-  }
 }
