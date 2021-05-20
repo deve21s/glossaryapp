@@ -1,96 +1,157 @@
 <div class="container mb-0">
-    <div class="box">
+  <div class="box">
     <div class="has-text-centered">
-      <h1 class="title is-size-4-mobile is-size-1-desktop is-capitalized">{{word?.title}}</h1>
+      <h1 class="title is-size-4-mobile is-size-1-desktop is-capitalized">
+        {{ word?.title }}
+      </h1>
     </div>
-    <br>
-    
-    <div class="box p-5 m-3" [innerHTML]="word?.details"></div>
-    <br><br>
-    <h1 class="title is-5">Refrences :</h1>
-      <div *ngFor="let r of word?.ref">
-      <a target="_blank" class="tag is-rounded" href="{{r.link}}">{{r.name}}</a>
-      </div>
-        <h1 class="title is-7"></h1>
-        <h1 class="title is-5">Related :</h1>
-          <div *ngFor="let r of word?.rel">
-            <a class="tag is-rounded" routerLink="/{{r.link}}">{{r.name}}</a>
-          </div>
-      </div>
-      <div class="mb-3 box has-text-centered">
-        <h3 class="title is-3 ">Is this helpfull for you?</h3>
-        <div class="has-text-centered">
-          <button (click)= "like()" [disabled]="dlike" class="button  mr-2 is-info">Like - {{word?.likes.likeCount}}</button>
-          <button (click)= "dislike()" [disabled]="dlike" class="button is-info">Dislike - {{word?.likes.disLike}}</button>
-        </div>
-      </div>
+    <br />
 
-      <span class="commentmassage" *ngIf="word?.comments.length == 0">Become first-one to comment on this glossary.</span>
-      <div id="commentform" class="columns is-centered">
-        <div class="column is-half-desktop">
-        <form #myform = "ngForm" (ngSubmit) = "onSubmit(myform)">
-             <div class="field">
-                <label class="label"></label>
-                  <div class="control">
-                    <input class="input" type="text" id="title" name="name" placeholder="Enter name.." ngModel required>
-                  </div>
-             </div>
-                <div class="field">
-                    <label class="label"></label>
-                    <div class="control">
-                      <textarea class="textarea" id="details" name="text" placeholder="comment .." ngModel required></textarea>
-                    </div>
-                </div>
-              <input type="submit" [disabled]="!myform.valid" class="button is-link is-green" value="Add comment" />            
+    <div class="box p-5 m-3" [innerHTML]="word?.details"></div>
+    <br /><br />
+    <h1 class="title is-5">Refrences :</h1>
+    <div *ngFor="let r of word?.ref">
+      <a target="_blank" class="tag is-rounded" href="{{ r.link }}">{{
+        r.name
+      }}</a>
+    </div>
+    <h1 class="title is-7"></h1>
+    <h1 class="title is-5">Related :</h1>
+    <div *ngFor="let r of word?.rel">
+      <a class="tag is-rounded" routerLink="/{{ r.link }}">{{ r.name }}</a>
+    </div>
+  </div>
+  <div class="mb-3 box has-text-centered">
+    <h3 class="title is-3">Is this helpfull for you?</h3>
+    <div class="has-text-centered">
+      <button (click)="like()" [disabled]="dlike" class="button mr-2 is-info">
+        Like - {{ word?.likes.likeCount }}
+      </button>
+      <button (click)="dislike()" [disabled]="dlike" class="button is-info">
+        Dislike - {{ word?.likes.disLike }}
+      </button>
+    </div>
+  </div>
+
+  <span class="commentmassage" *ngIf="word?.comments.length == 0"
+    >Become first-one to comment on this glossary.</span
+  >
+  <div id="commentform" class="columns is-centered">
+    <div class="column is-half-desktop">
+      <form #myform="ngForm" (ngSubmit)="onSubmit(myform)">
+        <div class="field">
+          <label class="label"></label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              id="title"
+              name="name"
+              placeholder="Enter name.."
+              ngModel
+              required
+            />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label"></label>
+          <div class="control">
+            <textarea
+              class="textarea"
+              id="details"
+              name="text"
+              placeholder="comment .."
+              ngModel
+              required
+            ></textarea>
+          </div>
+        </div>
+        <input
+          type="submit"
+          [disabled]="!myform.valid"
+          class="button is-link is-green"
+          value="Add comment"
+        />
+      </form>
+    </div>
+  </div>
+
+  <div class="has-text-centered" *ngIf="word?.comments.length !== 0">
+    <h1 class="title is-1 has-center">Commnets</h1>
+  </div>
+
+  <div *ngFor="let r of word?.comments">
+    <div class="card m-2 p-2">
+      <div class="field">
+        <a
+          (click)="show(replyform)"
+          class="button is-small is-pulled-right is-danger"
+          >reply</a
+        >
+      </div>
+      <p class="card-header tag is-rounded m-1">
+        {{ r.name }}
+        <figure class="image is-32x32">
+          <img class="is-rounded" src="{{ r.imageUrl }}" />
+        </figure>
+      </p>
+      <p class="card-body m-2">{{ r.text }}</p>
+
+      <div id="commentbox" [style.display]="showhide">
+        <div class="column box mb-2 is-half-desktop">
+          <form #replyform="ngForm" (ngSubmit)="onReply(replyform)">
+            <div style="display: none">
+              <input type="text" name="cid" ngModel="{{ r._id }}" />
+            </div>
+            <div class="field">
+              <label class="label"></label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  id="title"
+                  name="name"
+                  placeholder="Enter name.."
+                  ngModel
+                  required
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label"></label>
+              <div class="control">
+                <textarea
+                  class="textarea"
+                  id="details"
+                  name="text"
+                  placeholder="comment .."
+                  ngModel
+                  required
+                ></textarea>
+              </div>
+            </div>
+            <input
+              type="submit"
+              [disabled]="!replyform.valid"
+              class="button is-link is-green"
+              value="submit reply"
+            />
+            <input
+              class="button is-link is-danger"
+              type="submit"
+              value="cancel"
+              (click)="hide()"
+            />
           </form>
         </div>
       </div>
 
-      <div class="has-text-centered" *ngIf="word?.comments.length !== 0 ">
-        <h1 class="title is-1 has-center">Commnets</h1>
-      </div>
-
-      <div *ngFor="let r of word?.comments">
-        <div class="card m-2 p-2">
-          <div class="field">
-            <a (click)="show(replyform)" class="button is-small is-pulled-right is-danger">reply</a>
-          </div>
-          <p class="card-header tag is-rounded m-1" >{{r.name}}</p>
-          <p class="card-body m-2" >{{r.text}}</p>
-          <div id="commentbox" [style.display]="showhide">
-            <div class="column box mb-2 is-half-desktop">
-              <form #replyform = "ngForm" (ngSubmit) = "onReply(replyform)">
-                
-                <div style="display: none;">
-                  <input type="text" name="cid" ngModel = '{{r._id}}'>
-                </div>
-                    <div class="field">
-                      <label class="label"></label>
-                        <div class="control">
-                          <input class="input" type="text" id="title" name="name" placeholder="Enter name.." ngModel required>
-                        </div>
-                    </div>
-                      <div class="field">
-                          <label class="label"></label>
-                          <div class="control">
-                            <textarea class="textarea" id="details" name="text" placeholder="comment .." ngModel required></textarea>
-                          </div>
-                      </div>
-                    <input type="submit" [disabled]="!replyform.valid" class="button is-link is-green" value="submit reply" />
-                    <input class="button is-link is-danger" type="submit" value="cancel" (click)="hide()" />            
-                </form>
-              </div>
-          </div>
-      
-          <div *ngFor="let r of r.replys">
-            <div class="card p-2 mb-2 ml-5 has-background-white-ter">
-              <p class="card-header tag is-rounded m-1" >{{r.name}}</p>
-              <p class="card-body m-2">{{r.text}}</p>
-            </div>
-          </div>
+      <div *ngFor="let r of r.replys">
+        <div class="card p-2 mb-2 ml-5 has-background-white-ter">
+          <p class="card-header tag is-rounded m-1">{{ r.name }}</p>
+          <p class="card-body m-2">{{ r.text }}</p>
         </div>
       </div>
-  
+    </div>
+  </div>
 </div>
-
-

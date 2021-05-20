@@ -23,7 +23,7 @@ export class AppComponent {
   ngOnInit() {}
 
   islogin() {
-    if (this.localst.retrieve('user')) {
+    if (this.data?.isLoggedIn()) {
       return 'logout';
     } else {
       return 'login';
@@ -33,26 +33,9 @@ export class AppComponent {
     this.localst.clear('user');
     return this.router.navigateByUrl('');
   }
-
-  onSubmit(form: NgForm) {
-    let body = form.value.title;
-    this.data.getsearch(body).subscribe(
-      (res) => {
-        this.searchres = res;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
   loginradius(){
-    this.data.loginfirst().subscribe(
-      (res) => {
-        console.log(res)
-      },
-      (err) => {
-        console.log('error')
-      }
-    )
+    this.data.loginfirst().subscribe(result => {
+      console.log(result)
+    })
   }
 }

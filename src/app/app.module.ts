@@ -15,9 +15,7 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
 import { EditpComponent } from './editp/editp.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-// import { NgAisModule } from 'angular-instantsearch';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FilterPipe } from './filter.pipe';
 import { Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { QuillModule } from 'ngx-quill-wrapper';
@@ -29,7 +27,7 @@ const DEFAULT_QUILL_CONFIG: QuillConfigInterface = {
   modules: {
     toolbar: true,
   },
-  placeholder: 'Empty canvas',
+  placeholder: 'Enter Details',
 };
 
 @NgModule({
@@ -41,7 +39,6 @@ const DEFAULT_QUILL_CONFIG: QuillConfigInterface = {
     AddgComponent,
     LoginComponent,
     EditpComponent,
-    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +46,6 @@ const DEFAULT_QUILL_CONFIG: QuillConfigInterface = {
     HttpClientModule,
     FormsModule,
     NgxWebstorageModule.forRoot(),
-    // NgAisModule.forRoot(),
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,

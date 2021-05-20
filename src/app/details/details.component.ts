@@ -73,10 +73,11 @@ export class DetailsComponent implements OnInit {
     console.log(this.body);
     this.data.makecomment(this.id, this.body).subscribe(
       (res) => {
-        location.reload();
+        this.word = res
+        // location.reload();
       },
       (err) => {
-        location.reload();
+        // location.reload();
       }
     );
   }

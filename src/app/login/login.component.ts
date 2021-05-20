@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   body = null;
   token
   apiResponse
+  massage
 
   constructor(
     private data: DataService,
@@ -32,6 +33,16 @@ export class LoginComponent implements OnInit {
       this.token = params['token'];
       console.log(this.token)
     })
+  }
+  loginradius(){
+    this.data.loginfirst().subscribe(
+      (res) => {
+        console.log(res)
+      },
+      (err) => {
+        console.log('error')
+      }
+    )
   }
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -53,9 +64,12 @@ export class LoginComponent implements OnInit {
       (res) => {
         this.localSt.store('user', res);
         this.router.navigateByUrl('admin');
+        console.log("here")
       },
       (err) => {
-        this.router.navigateByUrl('login');
+        this.massage = err.error.text
+        console.log(err.error.text)
+        // this.router.navigateByUrl('login');
       }
     );
   }

@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LocalStorageService } from 'ngx-webstorage';
+import jwtDecode, { JwtDecodeOptions } from 'jwt-decode'
+import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
   baseurl = 'https://myglossary.herokuapp.com';
+  // baseurl = 'http://localhost:5000'
   constructor(private http: HttpClient, private local: LocalStorageService) {}
 
   getData() {
@@ -58,7 +61,10 @@ export class DataService {
     return this.http.get(this.baseurl + end);
   }
   makecomment(id, body) {
-    let end = '/comment/' + id;
+    let token = this.local.retrieve('user')
+    console.log(token)
+    let end = '/comment/' + id +"?"+ "token"+ "=" + token;
+    console.log(end)
     return this.http.post(this.baseurl + end, body);
   }
   makereply(cid, body) {
@@ -66,14 +72,21 @@ export class DataService {
     return this.http.post(this.baseurl + end, body);
   }
   isLoggedIn() {
-    if (this.local.retrieve('user')) {
-      return true;
+    let token = this.local.retrieve('user')
+    if (token) {
+      let decode = jwtDecode(token)
+      let { Roles } = decode
+      if(Roles === "user"){
+        return true;
+      }
+      return false
+      
     } else {
       return false;
     }
   }
   loginfirst(){
-    let end = 'https://dev-bw4tzgej5i5.hub.loginradius.com/auth.aspx?action=register&return_url=https://localhost:4200/login'
+    let end = 'https://dev-bw4tzgej5i5.hub.loginradius.com/auth.aspx?action=register&return_url=http://localhost:4200/login'
     return this.http.get(end);
   }
 }
