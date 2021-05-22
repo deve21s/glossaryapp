@@ -10,8 +10,10 @@ import { from } from 'rxjs';
 export class DataService {
   baseurl = 'https://myglossary.herokuapp.com';
   // baseurl = 'http://localhost:5000'
-  constructor(private http: HttpClient, private local: LocalStorageService) {}
-
+  user
+  constructor(private http: HttpClient, private local: LocalStorageService) {
+    this.user =  this.local.retrieve('user')
+  }
   getData() {
     return this.http.get(this.baseurl);
   }
@@ -30,25 +32,25 @@ export class DataService {
   }
 
   delete(id) {
-    let end = '/delete/' + id;
+    let end = '/delete/' + id +"?"+ "token"+ "=" + this.user;
     return this.http.get(this.baseurl + end);
   }
 
   addData(body) {
-    let end = '/new';
+    let end = '/new' +"?"+ "token"+ "=" + this.user;
     //change here again
     return this.http.post(this.baseurl + end, body);
   }
   editData(id, body) {
-    let end = '/edit/' + id;
+    let end = '/edit/' + id +"?"+ "token"+ "=" + this.user;
     return this.http.post(this.baseurl + end, body);
   }
   like(id, body) {
-    let end = '/likes/' + id;
+    let end = '/likes/' + id +"?"+ "token"+ "=" + this.user;
     return this.http.post(this.baseurl + end, body);
   }
   dislike(id, body) {
-    let end = '/dislike/' + id;
+    let end = '/dislike/' + id +"?"+ "token"+ "=" + this.user;
     return this.http.post(this.baseurl + end, body);
   }
 
@@ -61,21 +63,18 @@ export class DataService {
     return this.http.get(this.baseurl + end);
   }
   makecomment(id, body) {
-    let token = this.local.retrieve('user')
-    console.log(token)
-    let end = '/comment/' + id +"?"+ "token"+ "=" + token;
-    console.log(end)
+    let end = '/comment/' + id +"?"+ "token"+ "=" + this.user;
     return this.http.post(this.baseurl + end, body);
   }
   makereply(cid, body) {
-    let end = '/reply/' + cid;
+    let end = '/reply/' + cid +"?"+ "token"+ "=" + this.user;
     return this.http.post(this.baseurl + end, body);
   }
   isLoggedIn() {
     let token = this.local.retrieve('user')
     if (token) {
       let decode = jwtDecode(token)
-      if(decode["Roles"] === "user"){
+      if(decode["Roles"] === "user" || decode["Roles"] === "admin"){
         return true;
       }
       return false

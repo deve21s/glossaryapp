@@ -23,6 +23,7 @@
   </div>
   <div class="mb-3 box has-text-centered">
     <h3 class="title is-3">Is this helpfull for you?</h3>
+    <p class="tag mb-2" *ngIf="message && message !== ''">{{message}}</p>
     <div class="has-text-centered">
       <button (click)="like()" [disabled]="dlike" class="button mr-2 is-info">
         Like - {{ word?.likes.likeCount }}
@@ -89,11 +90,11 @@
           >reply</a
         >
       </div>
-      <p class="card-header tag is-rounded m-1">
-        {{ r.name }}
+      <p class="card-header tag m-1">
         <figure class="image is-32x32">
           <img class="is-rounded" src="{{ r.imageUrl }}" />
         </figure>
+        {{ r.name }}
       </p>
       <p class="card-body m-2">{{ r.text }}</p>
 
@@ -148,6 +149,9 @@
 
       <div *ngFor="let r of r.replys">
         <div class="card p-2 mb-2 ml-5 has-background-white-ter">
+          <figure class="image is-32x32">
+            <img class="is-rounded" src="{{ r.imageUrl }}" />
+          </figure>
           <p class="card-header tag is-rounded m-1">{{ r.name }}</p>
           <p class="card-body m-2">{{ r.text }}</p>
         </div>
