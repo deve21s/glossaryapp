@@ -37,7 +37,7 @@ export class DataService {
   }
   auth(body){
     let end = "/auth"
-    return this.http.get(this.baseurl + end, body)
+    return this.http.post(this.baseurl + end, body)
   }
 
   addData(body) {
