@@ -35,6 +35,10 @@ export class DataService {
     let end = '/delete/' + id +"?"+ "token"+ "=" + this.user;
     return this.http.get(this.baseurl + end);
   }
+  auth(){
+    let end = "/auth"
+    return this.http.get(this.baseurl + end)
+  }
 
   addData(body) {
     let end = '/new' +"?"+ "token"+ "=" + this.user;

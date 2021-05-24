@@ -31,7 +31,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       this.token = params['token'];
-      console.log(this.token)
+      if(this.token){
+        this.data.auth().subscribe(res => {
+          this.localSt.store('user', res)
+          this.router.navigateByUrl('')
+        })
+      }
+      
     })
   }
   loginForm = new FormGroup({

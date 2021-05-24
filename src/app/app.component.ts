@@ -22,6 +22,7 @@ export class AppComponent {
 
   ngOnInit() {}
 
+
   islogin() {
     if (this.data?.isLoggedIn()) {
       return 'logout';
