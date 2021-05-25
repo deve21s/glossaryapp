@@ -1,10 +1,19 @@
 <h1 class="has-text-centered title is-3">Login</h1>
 <div
-  class="columns is-multiline is-centered is-1-mobile is-3-tablet is-3-desktop is-8-widescreen is-2-fullhd"
+  class="
+    columns
+    is-multiline
+    is-centered
+    is-1-mobile
+    is-3-tablet
+    is-3-desktop
+    is-8-widescreen
+    is-2-fullhd
+  "
 >
   <!-- <div class="column"></div> -->
   <div class="column box is-half login-box">
-    <h3 class="tag">{{massage}}</h3>
+    <h3 class="tag">{{ massage }}</h3>
     <form
       class="form"
       [formGroup]="loginForm"
@@ -85,17 +94,16 @@
   <!-- <div class="column"></div> -->
 </div>
 
-
 <style>
   span {
     white-space: pre-wrap;
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
   }
-  </style>
-  
-  <div>
+</style>
+
+<div>
   <div class="apiResponse">
     <span>{{ apiResponse }}</span>
   </div>
-  </div>
+</div>

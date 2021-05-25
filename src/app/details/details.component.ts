@@ -15,7 +15,7 @@ export class DetailsComponent implements OnInit {
   body;
   showhide = 'none';
   dlike = false;
-  message
+  message;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,7 +45,7 @@ export class DetailsComponent implements OnInit {
   like() {
     this.data.like(this.id, this.body).subscribe(
       (res) => {
-        this.message = res
+        this.message = res;
         this.dilike();
         // location.reload();
       },
@@ -58,7 +58,7 @@ export class DetailsComponent implements OnInit {
   dislike() {
     this.data.dislike(this.id, this.body).subscribe(
       (res) => {
-        this.message = res
+        this.message = res;
         this.dilike();
         // location.reload();
       },
@@ -74,7 +74,7 @@ export class DetailsComponent implements OnInit {
     console.log(this.body);
     this.data.makecomment(this.id, this.body).subscribe(
       (res) => {
-        this.word = res
+        this.word = res;
         // location.reload();
       },
       (err) => {

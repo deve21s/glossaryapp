@@ -13,35 +13,33 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   body = null;
-  token
-  apiResponse
-  massage
+  token;
+  apiResponse;
+  massage;
 
   constructor(
     private data: DataService,
     private localSt: LocalStorageService,
     private router: Router,
     private activatedRoute: ActivatedRoute
-
   ) {
-    this.token = "";
-    this.apiResponse = "";
+    this.token = '';
+    this.apiResponse = '';
   }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe(params => {
+    this.activatedRoute.queryParams.subscribe((params) => {
       this.token = params['token'];
       let body = {
-        "token" : this.token
+        token: this.token,
+      };
+      if (this.token) {
+        this.data.auth(body).subscribe((res) => {
+          this.localSt.store('user', res);
+          this.router.navigateByUrl('');
+        });
       }
-      if(this.token){
-        this.data.auth(body).subscribe(res => {
-          this.localSt.store('user', res)
-          this.router.navigateByUrl('')
-        })
-      }
-      
-    })
+    });
   }
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -65,9 +63,9 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('admin');
       },
       (err) => {
-        this.massage = err.error.text
-        console.log(err.error.text)
-         this.router.navigateByUrl('login');
+        this.massage = err.error.text;
+        console.log(err.error.text);
+        this.router.navigateByUrl('login');
       }
     );
   }
